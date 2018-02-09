@@ -29,8 +29,8 @@ class %%CLASS%%Controller extends Controller
      */
     public function index(PaginationRequest $request)
     {
-        $paginate['offset']     = $request->offset();
         $paginate['limit']      = $request->limit();
+        $paginate['offset']     = $request->offset();
         $paginate['order']      = $request->order();
         $paginate['direction']  = $request->direction();
         $paginate['baseUrl']    = action( 'Admin\%%CLASS%%Controller@index' );
