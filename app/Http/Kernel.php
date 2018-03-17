@@ -64,7 +64,8 @@ class Kernel extends HttpKernel
         'web.values'                => \App\Http\Middleware\Web\SetDefaultValues::class,
         'throttle'                  => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'bindings'                  => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'api.auth'                  => \App\Http\Middleware\API\V1\Authenticate::class,
         'auth'                      => \Illuminate\Auth\Middleware\Authenticate::class,
+        'api.client'                => \Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
+        'api.user'                  => \App\Http\Middleware\API\V1\DetectUser::class
     ];
 }
