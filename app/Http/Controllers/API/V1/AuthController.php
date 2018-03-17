@@ -53,11 +53,6 @@ class AuthController extends Controller
             return Response::response(40101);
         }
 
-        $user = $this->userService->signIn($data);
-        if (empty($user)) {
-            return Response::response(40101);
-        }
-
         $data['username'] = $data['email'];
         $serverRequest = PsrServerRequest::createFromRequest($request, $data);
 
@@ -89,8 +84,6 @@ class AuthController extends Controller
         if (!empty($userDeleted)) {
             return Response::response(40002);
         }
-
-        $user = $this->userService->signUp($data);
 
         $data['username'] = $data['email'];
         $serverRequest = PsrServerRequest::createFromRequest($request, $data);

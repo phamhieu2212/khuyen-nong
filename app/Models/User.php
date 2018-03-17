@@ -97,6 +97,10 @@ class User extends AuthenticatableBase
         return $this->where('email', $identifier)->first();
     }
 
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
 
     public function profileImage()
     {
