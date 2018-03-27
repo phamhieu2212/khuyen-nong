@@ -66,6 +66,56 @@ interface BaseRepositoryInterface
     public function countEnabled();
 
     /**
+     * Get All Models with filter conditions.
+     *
+     * @param array  $filter
+     * @param string $order
+     * @param string $direction
+     *
+     * @return \App\Models\Base[]|\Traversable|array
+     */
+    public function allByFilter($filter, $order = null, $direction = null);
+
+    /**
+     * Get Models with Order.
+     *
+     * @param array  $filter
+     * @param string $order
+     * @param string $direction
+     * @param int    $offset
+     * @param int    $limit
+     *
+     * @return \App\Models\Base[]|\Traversable|array
+     */
+    public function getByFilter($filter, $order, $direction, $offset, $limit);
+
+    /**
+     * @param array $filter
+     *
+     * @return int
+     */
+    public function countByFilter($filter);
+
+    /**
+     * @param array $filter
+     *
+     * @return \App\Models\Base | null
+     */
+    public function firstByFilter($filter);
+
+    /**
+     * @param array $filter
+     *
+     * @return string
+     */
+    public function getSQLByFilter($filter);
+
+    /**
+     * @param array $filter
+     **/
+    public function deleteByFilter($filter);
+
+    /**
      * @return string
      */
     public function getModelClassName();
@@ -73,7 +123,7 @@ interface BaseRepositoryInterface
     /**
      * Get Empty Array or Traversable Object.
      *
-     * @return \Illuminate\Database\Eloquent\Model;
+     * @return \Illuminate\Database\Eloquent\Model | \Illuminate\Database\Query\Builder;
      */
     public function getBlankModel();
 

@@ -14,6 +14,8 @@ class BaseRepository implements BaseRepositoryInterface
 
     protected $cacheLifeTime = 60; // Minutes
 
+    protected $querySearchTargets = [];
+
     public function getEmptyList()
     {
         return new Collection();
@@ -100,6 +102,50 @@ class BaseRepository implements BaseRepositoryInterface
         return $model::where('is_enabled', '=', true)->count();
     }
 
+    public function allByFilter($filter, $order = null, $direction = null)
+    {
+        $query = $this->buildQueryByFilter($this->getBlankModel(), $filter);
+        $query = $this->buildOrder($query, $filter, $order, $direction);
+
+        return $query->get();
+    }
+
+    public function getByFilter($filter, $order = 'id', $direction = 'asc', $offset = 0, $limit = 20)
+    {
+        $query = $this->buildQueryByFilter($this->getBlankModel(), $filter);
+        $query = $this->buildOrder($query, $filter, $order, $direction);
+
+        return $query->skip($offset)->take($limit)->get();
+    }
+
+    public function countByFilter($filter)
+    {
+        $query = $this->buildQueryByFilter($this->getBlankModel(), $filter);
+
+        return $query->count();
+    }
+
+    public function firstByFilter($filter)
+    {
+        $query = $this->buildQueryByFilter($this->getBlankModel(), $filter);
+
+        return $query->first();
+    }
+
+    public function getSQLByFilter($filter)
+    {
+        $query = $this->buildQueryByFilter($this->getBlankModel(), $filter);
+
+        return $query->toSql();
+    }
+
+    public function deleteByFilter($filter)
+    {
+        $query = $this->buildQueryByFilter($this->getBlankModel(), $filter);
+
+        return $query->delete();
+    }
+
     public function getAPIArray($models)
     {
         $ret = [];
@@ -159,11 +205,11 @@ class BaseRepository implements BaseRepositoryInterface
         $offset,
         $limit
     ) {
-        $order = strtolower($order);
+        $order     = strtolower($order);
         $direction = strtolower($direction);
-        $offset = intval($offset);
-        $limit = intval($limit);
-        $order = in_array($order, $orderCandidates) ? $order : strtolower($orderDefault);
+        $offset    = intval($offset);
+        $limit     = intval($limit);
+        $order     = in_array($order, $orderCandidates) ? $order : strtolower($orderDefault);
         $direction = in_array($direction, ['asc', 'desc']) ? $direction : 'asc';
 
         if ($limit <= 0) {
@@ -173,6 +219,75 @@ class BaseRepository implements BaseRepositoryInterface
             $offset = 0;
         }
 
-        return $query->orderBy($order, $direction)->offset($offset)->limit($limit)->get();
+        $query = $this->buildOrder($query, [], $order, $direction);
+
+        return $query->offset($offset)->limit($limit)->get();
+    }
+
+    /**
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param array                              $filter
+     *
+     * @return \Illuminate\Database\Query\Builder
+     */
+    protected function buildQueryByFilter($query, $filter)
+    {
+        $tableName = $this->getBlankModel()->getTable();
+
+        $query = $this->queryOptions($query);
+
+        if (count($this->querySearchTargets) > 0 && array_key_exists('query', $filter)) {
+            $searchWord = array_get($filter, 'query');
+            if (!empty($searchWord)) {
+                $query = $query->where(function($q) use ($searchWord) {
+                    foreach ($this->querySearchTargets as $index => $target) {
+                        if ($index === 0) {
+                            $q = $q->where($target, 'LIKE', '%'.$searchWord.'%');
+                        } else {
+                            $q = $q->orWhere($target, 'LIKE', '%'.$searchWord.'%');
+                        }
+                    }
+                });
+                unset($filter['query']);
+            }
+        }
+
+        foreach ($filter as $column => $value) {
+            if (is_array($value)) {
+                $query = $query->whereIn($tableName.'.'.$column, $value);
+            } else {
+                $query = $query->where($tableName.'.'.$column, $value);
+            }
+        }
+
+        return $query;
+    }
+
+    /**
+     * @param \Illuminate\Database\Query\Builder $query
+     * @param array                              $filter
+     * @param string                             $order
+     * @param string                             $direction
+     *
+     * @return \Illuminate\Database\Query\Builder
+     */
+    protected function buildOrder($query, $filter, $order, $direction)
+    {
+        if (!empty($order)) {
+            $direction = empty($direction) ? 'asc' : $direction;
+            $query     = $query->orderBy($order, $direction);
+        }
+
+        return $query;
+    }
+
+    /**
+     * @param \Illuminate\Database\Query\Builder $query
+     *
+     * @return \Illuminate\Database\Query\Builder
+     */
+    protected function queryOptions($query)
+    {
+        return $query;
     }
 }
