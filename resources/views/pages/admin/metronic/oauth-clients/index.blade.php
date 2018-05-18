@@ -144,9 +144,10 @@
                     </div>
                     <div class="col-sm-12 col-md-6">
                         <div id="m_table_1_filter" class="dataTables_filter">
-                            <form action="#">
+                            <form method="get" accept-charset="utf-8" action="{!! action('Admin\OauthClientController@index') !!}">
+                                {!! csrf_field() !!}
                                 <div class="m-input-icon m-input-icon--left m-input-icon--right">
-                                    <input type="text" class="form-control m-input m-input--pill" placeholder="Tìm kiếm">
+                                    <input type="text" name="keyword" id="keyword" value="{{ $keyword }}" class="form-control m-input m-input--pill" placeholder="Tìm kiếm ...">
                                     <span class="m-input-icon__icon m-input-icon__icon--left">
                                         <span>
                                             <i class="la la-search"></i>
@@ -219,7 +220,7 @@
 
                 <div class="row wrap-bottom-pagination">
                     <div class="col-sm-12">
-                        {!! \PaginationHelper::render($paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'], $count, $paginate['baseUrl'], [], 5, 'pages.admin.metronic.shared.bottom-pagination') !!}
+                        {!! \PaginationHelper::render($paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'], $count, $paginate['baseUrl'], ['keyword' => $keyword], 5, 'pages.admin.metronic.shared.bottom-pagination') !!}
                     </div>
                 </div>
             </div>

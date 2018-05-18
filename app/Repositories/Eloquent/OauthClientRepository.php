@@ -17,6 +17,8 @@ use App\Repositories\OauthClientRepositoryInterface;
  */
 class OauthClientRepository extends SingleKeyModelRepository implements OauthClientRepositoryInterface
 {
+    protected $querySearchTargets = ['name', 'secret', 'redirect'];
+
     public function getBlankModel()
     {
         return new OauthClient();

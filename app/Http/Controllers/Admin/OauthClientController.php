@@ -12,8 +12,7 @@ class OauthClientController extends Controller
 
     /** @var \App\Repositories\OauthClientRepositoryInterface */
     protected $oauthClientRepository;
-
-
+    
     public function __construct(
         OauthClientRepositoryInterface $oauthClientRepository
     )
@@ -35,8 +34,14 @@ class OauthClientController extends Controller
         $paginate['direction']  = $request->direction('asc');
         $paginate['baseUrl']    = action( 'Admin\OauthClientController@index' );
 
-        $count = $this->oauthClientRepository->count();
-        $oauthClients = $this->oauthClientRepository->get( $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'] );
+        $filter = [];
+        $keyword = $request->get('keyword');
+        if (!empty($keyword)) {
+            $filter['query'] = $keyword;
+        }
+
+        $count = $this->oauthClientRepository->countByFilter($filter);
+        $oauthClients = $this->oauthClientRepository->getByFilter($filter, $paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit']);
 
         return view(
             'pages.admin.' . config('view.admin') . '.oauth-clients.index',
@@ -44,6 +49,7 @@ class OauthClientController extends Controller
                 'oauthClients' => $oauthClients,
                 'count'        => $count,
                 'paginate'     => $paginate,
+                'keyword'      => $keyword
             ]
         );
     }
