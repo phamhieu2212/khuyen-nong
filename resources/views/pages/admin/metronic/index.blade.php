@@ -234,7 +234,7 @@
                 <div class="m-portlet__body">
                     <div class="m-widget27 m-portlet-fit--sides">
                         <div class="m-widget27__pic">
-                            <img src="assets/app/media/img//bg/bg-4.jpg" alt="">
+                            <img src="{!! \URLHelper::asset('metronic/app/media/img/bg/bg-4.jpg', 'admin') !!}" alt="">
                             <h3 class="m-widget27__title m--font-light">
 													<span>
 														<span>

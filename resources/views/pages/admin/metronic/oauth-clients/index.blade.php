@@ -12,7 +12,8 @@
 @stop
 
 @section('scripts')
-    <script src="{!! \URLHelper::asset('js/delete_item.js', 'admin/adminlte') !!}"></script>
+    <script src="{!! \URLHelper::asset('metronic/demo/default/custom/components/base/sweetalert2.js', 'admin') !!}"></script>
+    <script src="{!! \URLHelper::asset('metronic/js/delete_item.js', 'admin') !!}"></script>
 @stop
 
 @section('title')
@@ -207,7 +208,7 @@
                                         <a href="{!! action('Admin\OauthClientController@show', $oauthClient->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
                                             <i class="la la-edit"></i>
                                         </a>
-                                        <a href="#" data-delete-url="{!! action('Admin\OauthClientController@destroy', $oauthClient->id) !!}" class="btn m--font-danger m-btn--pill m-btn--air no-padding delete-button">
+                                        <a href="javascript:;" data-delete-url="{!! action('Admin\OauthClientController@destroy', $oauthClient->id) !!}" class="btn m--font-danger m-btn--pill m-btn--air no-padding delete-button">
                                             <i class="la la-trash"></i>
                                         </a>
                                     </td>
