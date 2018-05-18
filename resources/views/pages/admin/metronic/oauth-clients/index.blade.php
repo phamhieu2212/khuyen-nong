@@ -162,29 +162,16 @@
                     <div class="col-sm-12 wrap-index-table">
                         <table class="table table-striped- table-bordered table-hover table-checkable" id="index-table">
                             <thead>
-                            <tr>
-                                <th>
-                                    ID
-                                </th>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Secret
-                                </th>
-                                <th>
-                                    Personal Access Client
-                                </th>
-                                <th>
-                                    Password Client
-                                </th>
-                                <th>
-                                    Revoked
-                                </th>
-                                <th>
-                                    Actions
-                                </th>
-                            </tr>
+                                <tr>
+                                    <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.oauth-clients.columns.name')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('secret', trans('admin.pages.oauth-clients.columns.secret')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('personal_access_client', trans('admin.pages.oauth-clients.columns.personal_access_client')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('password_client', trans('admin.pages.oauth-clients.columns.password_client')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('revoked', trans('admin.pages.oauth-clients.columns.revoked')) !!}</th>
+
+                                    <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
+                                </tr>
                             </thead>
 
                             <tbody>
@@ -232,7 +219,7 @@
 
                 <div class="row wrap-bottom-pagination">
                     <div class="col-sm-12">
-                        @include('pages.admin.metronic.shared.bottom-pagination')
+                        {!! \PaginationHelper::render($paginate['order'], $paginate['direction'], $paginate['offset'], $paginate['limit'], $count, $paginate['baseUrl'], [], 5, 'pages.admin.metronic.shared.bottom-pagination') !!}
                     </div>
                 </div>
             </div>
