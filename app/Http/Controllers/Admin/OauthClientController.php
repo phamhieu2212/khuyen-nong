@@ -12,7 +12,7 @@ class OauthClientController extends Controller
 
     /** @var \App\Repositories\OauthClientRepositoryInterface */
     protected $oauthClientRepository;
-    
+
     public function __construct(
         OauthClientRepositoryInterface $oauthClientRepository
     )
@@ -78,7 +78,7 @@ class OauthClientController extends Controller
      */
     public function store(OauthClientRequest $request)
     {
-        $name = $request->get('name', 'Truong Lam Karaoke');
+        $name = $request->get('name', 'Test');
 
         \Artisan::call(
             'passport:client',
