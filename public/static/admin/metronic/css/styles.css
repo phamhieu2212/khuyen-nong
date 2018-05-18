@@ -1,0 +1,22 @@
+.no-padding {
+    padding: 0;
+}
+.wrap-index {
+    padding-top: 20px;
+}
+.wrap-index .dataTables_filter {
+    margin-bottom: 15px;
+}
+.wrap-index .dataTables_filter input {
+    width: 100%;
+    margin: 0;
+}
+.wrap-index-table {
+    overflow-x: scroll;
+}
+.wrap-index-table tr th {
+    text-align: center;
+}
+.wrap-bottom-pagination {
+    padding-top: 20px;
+}
