@@ -256,7 +256,7 @@
                                 <div class="m-dropdown__wrapper">
                                     <span class="m-dropdown__arrow m-dropdown__arrow--center"></span>
                                     <div class="m-dropdown__inner">
-                                        <div class="m-dropdown__header m--align-center" style="background: url(../../../assets/app/media/img/misc/notification_bg.jpg); background-size: cover;">
+                                        <div class="m-dropdown__header m--align-center" style="background: url({!! \URLHelper::asset('metronic/app/media/img/misc/notification_bg.jpg', 'admin') !!}); background-size: cover;">
                                             <span class="m-dropdown__header-title">
                                                 9 New
                                             </span>
@@ -475,7 +475,7 @@
                                 <div class="m-dropdown__wrapper">
                                     <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
                                     <div class="m-dropdown__inner">
-                                        <div class="m-dropdown__header m--align-center" style="background: url(../../../assets/app/media/img/misc/quick_actions_bg.jpg); background-size: cover;">
+                                        <div class="m-dropdown__header m--align-center" style="background: url({!! \URLHelper::asset('metronic/app/media/img/misc/quick_actions_bg.jpg', 'admin') !!}); background-size: cover;">
                                             <span class="m-dropdown__header-title">
                                                 Quick Actions
                                             </span>
@@ -538,16 +538,16 @@
                                     <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
                                     <div class="m-dropdown__inner">
                                         <div class="m-dropdown__header m--align-center"
-                                             style="background: url(../../../assets/app/media/img/misc/user_profile_bg.jpg); background-size: cover;">
+                                             style="background: url({!! \URLHelper::asset('metronic/app/media/img/misc/user_profile_bg.jpg', 'admin') !!}); background-size: cover;">
                                             <div class="m-card-user m-card-user--skin-dark">
                                                 <div class="m-card-user__pic">
                                                     <img src="{!! \URLHelper::asset('metronic/app/media/img/users/user4.jpg', 'admin') !!}"
                                                          class="m--img-rounded m--marginless" alt=""/>
                                                 </div>
                                                 <div class="m-card-user__details">
-                                                                    <span class="m-card-user__name m--font-weight-500">
-                                                                        Mark Andre
-                                                                    </span>
+                                                    <span class="m-card-user__name m--font-weight-500">
+                                                        Mark Andre
+                                                    </span>
                                                     <a href="" class="m-card-user__email m--font-weight-300 m-link">
                                                         mark.andre@gmail.com
                                                     </a>
@@ -563,7 +563,7 @@
                                                         </span>
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="../../../header/profile.html" class="m-nav__link">
+                                                        <a href="{{ action('Admin\MeController@index') }}" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-profile-1"></i>
                                                             <span class="m-nav__link-title">
                                                                 <span class="m-nav__link-wrap">
@@ -580,7 +580,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="../../../header/profile.html" class="m-nav__link">
+                                                        <a href="{{ action('Admin\MeController@index') }}" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-share"></i>
                                                             <span class="m-nav__link-text">
                                                                 Activity
@@ -588,7 +588,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="../../../header/profile.html" class="m-nav__link">
+                                                        <a href="{{ action('Admin\MeController@index') }}" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-chat-1"></i>
                                                             <span class="m-nav__link-text">
                                                                 Messages
@@ -597,7 +597,7 @@
                                                     </li>
                                                     <li class="m-nav__separator m-nav__separator--fit"></li>
                                                     <li class="m-nav__item">
-                                                        <a href="../../../header/profile.html" class="m-nav__link">
+                                                        <a href="{{ action('Admin\MeController@index') }}" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-info"></i>
                                                             <span class="m-nav__link-text">
                                                                 FAQ
@@ -605,7 +605,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="../../../header/profile.html" class="m-nav__link">
+                                                        <a href="{{ action('Admin\MeController@index') }}" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-lifebuoy"></i>
                                                             <span class="m-nav__link-text">
                                                                 Support
