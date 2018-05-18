@@ -6,7 +6,7 @@ return [
         'admin_users'              => 'Admin Users',
         'users'                    => 'Users',
         'admin_user_notifications' => 'AdminUserNotifications',
-        'user_notifications'       => 'UserNotifications',
+        'user_notifications'       => 'User Notifications',
         'site_configuration'       => 'Site Configuration',
         'log_system'               => 'Logs System',
         'images'                   => 'Images',

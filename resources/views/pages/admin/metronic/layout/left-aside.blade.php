@@ -4,114 +4,161 @@
 <div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark ">
     <!-- BEGIN: Aside Menu -->
     <div id="m_ver_menu" class="m-aside-menu  m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark " m-menu-vertical="1" m-menu-scrollable="0" m-menu-dropdown-timeout="500">
-        <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
-            <li class="m-menu__item " aria-haspopup="true">
-                <a href="../../../index.html" class="m-menu__link ">
+        <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow " style="padding-top: 0;">
+            <li class="m-menu__section ">
+                <h4 class="m-menu__section-text">
+                    MAIN NAVIGATION
+                </h4>
+                <i class="m-menu__section-icon flaticon-more-v3"></i>
+            </li>
+
+            <li class="m-menu__item @if( $menu=='dashboard') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\IndexController@index') !!}" class="m-menu__link ">
                     <i class="m-menu__link-icon flaticon-line-graph"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                Dashboard
-                            </span>
-                            <span class="m-menu__link-badge">
-                                <span class="m-badge m-badge--danger">
-                                    2
-                                </span>
+                                @lang('admin.menu.dashboard')
                             </span>
                         </span>
                     </span>
                 </a>
             </li>
 
-            <li class="m-menu__section ">
-                <h4 class="m-menu__section-text">
-                    CRUD
-                </h4>
-                <i class="m-menu__section-icon flaticon-more-v3"></i>
-            </li>
-            <li class="m-menu__item  m-menu__item--submenu m-menu__item--open m-menu__item--expanded"
-                aria-haspopup="true" m-menu-submenu-toggle="hover">
-                <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                    <i class="m-menu__link-icon flaticon-list-3"></i>
-                                        <span class="m-menu__link-text">
-                                            DataTables
-                                        </span>
-                    <i class="m-menu__ver-arrow la la-angle-right"></i>
+            <li class="m-menu__item @if( $menu=='articles') m-menu__item--active @endif" aria-haspopup="true">
+                <a href="{!! \URL::action('Admin\ArticleController@index') !!}" class="m-menu__link ">
+                    <i class="m-menu__link-icon la la-file-text"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                @lang('admin.menu.articles')
+                            </span>
+                        </span>
+                    </span>
                 </a>
-                <div class="m-menu__submenu ">
-                    <span class="m-menu__arrow"></span>
-                    <ul class="m-menu__subnav">
-                        <li class="m-menu__item  m-menu__item--parent" aria-haspopup="true">
-                                                <span class="m-menu__link">
-                                                    <span class="m-menu__link-text">
-                                                        DataTables
-                                                    </span>
-                                                </span>
-                        </li>
-                        <li class="m-menu__item  m-menu__item--submenu m-menu__item--open m-menu__item--expanded"
-                            aria-haspopup="true" m-menu-submenu-toggle="hover">
-                            <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                                <i class="m-menu__link-bullet m-menu__link-bullet--dot">
-                                    <span></span>
-                                </i>
-                                <span class="m-menu__link-text">
-                                    Basic
-                                </span>
-                                <i class="m-menu__ver-arrow la la-angle-right"></i>
-                            </a>
-                            <div class="m-menu__submenu ">
-                                <span class="m-menu__arrow"></span>
-                                <ul class="m-menu__subnav">
-                                    <li class="m-menu__item  m-menu__item--active" aria-haspopup="true">
-                                        <a href="../../../crud/datatables/basic/basic.html"
-                                           class="m-menu__link ">
-                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="m-menu__link-text">
-                                                Basic Tables
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="m-menu__item " aria-haspopup="true">
-                                        <a href="../../../crud/datatables/basic/scrollable.html"
-                                           class="m-menu__link ">
-                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="m-menu__link-text">
-                                                Scrollable Tables
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="m-menu__item " aria-haspopup="true">
-                                        <a href="../../../crud/datatables/basic/headers.html"
-                                           class="m-menu__link ">
-                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="m-menu__link-text">
-                                                Complex Headers
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li class="m-menu__item " aria-haspopup="true">
-                                        <a href="../../../crud/datatables/basic/paginations.html"
-                                           class="m-menu__link ">
-                                            <i class="m-menu__link-bullet m-menu__link-bullet--dot">
-                                                <span></span>
-                                            </i>
-                                            <span class="m-menu__link-text">
-                                                Pagination Options
-                                            </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
             </li>
+
+            @if( $authUser->hasRole(\App\Models\AdminUserRole::ROLE_ADMIN) )
+                <li class="m-menu__section ">
+                    <h4 class="m-menu__section-text">
+                        USER MANAGEMENT
+                    </h4>
+                    <i class="m-menu__section-icon flaticon-more-v3"></i>
+                </li>
+
+                <li class="m-menu__item @if( $menu=='admin_users') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\AdminUserController@index') !!}" class="m-menu__link ">
+                        <i class="m-menu__link-icon la la-user-secret"></i>
+                        <span class="m-menu__link-title">
+                            <span class="m-menu__link-wrap">
+                                <span class="m-menu__link-text">
+                                    @lang('admin.menu.admin_users')
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </li>
+
+                <li class="m-menu__item @if( $menu=='admin_user_notifications') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\AdminUserNotificationController@index') !!}" class="m-menu__link ">
+                    <i class="m-menu__link-icon la la-bell-o"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                @lang('admin.menu.admin_user_notifications')
+                            </span>
+                        </span>
+                    </span>
+                    </a>
+                </li>
+
+                <li class="m-menu__item @if( $menu=='users') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\UserController@index') !!}" class="m-menu__link ">
+                    <i class="m-menu__link-icon la la-users"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                @lang('admin.menu.users')
+                            </span>
+                        </span>
+                    </span>
+                    </a>
+                </li>
+
+                <li class="m-menu__item @if( $menu=='user_notifications') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\UserNotificationController@index') !!}" class="m-menu__link ">
+                    <i class="m-menu__link-icon la la-bell"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                @lang('admin.menu.user_notifications')
+                            </span>
+                        </span>
+                    </span>
+                    </a>
+                </li>
+            @endif
+
+            @if( $authUser->hasRole(\App\Models\AdminUserRole::ROLE_SUPER_USER) )
+                <li class="m-menu__section ">
+                    <h4 class="m-menu__section-text">
+                        BACKEND
+                    </h4>
+                    <i class="m-menu__section-icon flaticon-more-v3"></i>
+                </li>
+
+                <li class="m-menu__item @if( $menu=='site_configurations') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\SiteConfigurationController@index') !!}" class="m-menu__link">
+                        <i class="m-menu__link-icon la la-cogs"></i>
+                        <span class="m-menu__link-title">
+                            <span class="m-menu__link-wrap">
+                                <span class="m-menu__link-text">
+                                    @lang('admin.menu.site_configuration')
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </li>
+
+                <li class="m-menu__item @if( $menu=='oauth_clients') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\OauthClientController@index') !!}" class="m-menu__link">
+                        <i class="m-menu__link-icon la la-key"></i>
+                        <span class="m-menu__link-title">
+                            <span class="m-menu__link-wrap">
+                                <span class="m-menu__link-text">
+                                    OAuth Clients
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </li>
+
+                <li class="m-menu__item @if( $menu=='images') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\ImageController@index') !!}" class="m-menu__link">
+                        <i class="m-menu__link-icon la la-image"></i>
+                        <span class="m-menu__link-title">
+                            <span class="m-menu__link-wrap">
+                                <span class="m-menu__link-text">
+                                    @lang('admin.menu.images')
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </li>
+
+                <li class="m-menu__item @if( $menu=='logs') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\LogController@index') !!}" class="m-menu__link">
+                        <i class="m-menu__link-icon la la-sticky-note"></i>
+                        <span class="m-menu__link-title">
+                            <span class="m-menu__link-wrap">
+                                <span class="m-menu__link-text">
+                                    @lang('admin.menu.log_system')
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
     <!-- END: Aside Menu -->

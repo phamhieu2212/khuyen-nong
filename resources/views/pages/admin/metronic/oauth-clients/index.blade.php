@@ -1,4 +1,4 @@
-@extends('pages.admin.metronic.layout.application',['menu' => 'dashboard'] )
+@extends('pages.admin.metronic.layout.application',['menu' => 'oauth_clients'] )
 
 @section('metadata')
 @stop
