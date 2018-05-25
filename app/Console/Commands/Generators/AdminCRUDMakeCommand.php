@@ -2,6 +2,9 @@
 
 namespace App\Console\Commands\Generators;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
+
 class AdminCRUDMakeCommand extends GeneratorCommandBase
 {
     /**
@@ -55,20 +58,33 @@ class AdminCRUDMakeCommand extends GeneratorCommandBase
      *
      * @return bool
      */
-    protected function generateController($name)
+    protected function generateController($controllerName)
     {
-        $path = $this->getControllerPath($name);
-        if ($this->alreadyExists($path)) {
+        $path = $this->getControllerPath($controllerName);
+        if ($this->alreadyExists($controllerName)) {
             $this->error($path.' already exists.');
 
             return false;
         }
 
-        $this->makeDirectory($path);
+        view()->addLocation(implode(DIRECTORY_SEPARATOR, [__DIR__, 'stubs']));
 
-        $stub = $this->files->get($this->getStubForController());
-        $this->replaceTemplateVariables($stub, $name);
-        $this->files->put($path, $stub);
+        $fileContent = view(
+            'crud.admin.controller',
+            [
+                'controllerName' => $controllerName,
+                'modelName'      => $controllerName,
+                'reposName'      => strtolower(substr($controllerName, 0, 1)).substr($controllerName, 1),
+                'viewFolder'     => snake_case(str_plural($controllerName), '-'),
+                'objectName'     => strtolower(substr($controllerName, 0, 1)).substr($controllerName, 1),
+                'requestName'    => $controllerName,
+                'columnNames'    => $this->getColumns($controllerName),
+            ]
+        )->render();
+        $fileContent = '<?php' . PHP_EOL . $fileContent;
+        
+        $this->makeDirectory($path);
+        $this->files->put($path, $fileContent);
 
         return true;
     }
@@ -83,8 +99,8 @@ class AdminCRUDMakeCommand extends GeneratorCommandBase
         if (preg_match('/([A-Za-z0-9]+)(Controller)?$/', $name, $matches)) {
             $name = $matches[1];
         }
-
-        return \StringHelper::singularize(ucwords($name));
+        
+        return ucwords($name);
     }
 
     protected function getColumns($name)
