@@ -136,6 +136,14 @@
                                             @endif
                                         <td>｛{ ${{$objectName}}->{{$column['name']}} }}</td>
                                         @endforeach
+                                        <td>
+                                            <a href="｛!! action('Admin\{{$modelName}}Controller@show', ${{$objectName}}->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
+                                                <i class="la la-edit"></i>
+                                            </a>
+                                            <a href="javascript:;" data-delete-url="｛!! action('Admin\{{$modelName}}Controller@destroy', ${{$objectName}}->id) !!}" class="btn m--font-danger m-btn--pill m-btn--air no-padding delete-button">
+                                                <i class="la la-trash"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 ＠endforeach
                             </tbody>
