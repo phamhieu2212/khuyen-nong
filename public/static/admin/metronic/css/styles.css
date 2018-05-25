@@ -32,3 +32,9 @@
     text-align: left;
     margin-bottom: 0;
 }
+.label-datetimepicker {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+}

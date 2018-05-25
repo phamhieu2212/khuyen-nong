@@ -28,9 +28,9 @@ class AdminCRUDMakeCommand extends GeneratorCommandBase
      */
     protected $type = 'AdminCRUD';
 
-    protected function generate($name)
+    protected function generate($modelName)
     {
-        $modelName = $this->getModelName($name);
+        $modelName = $this->getModelName($modelName);
 
         if (!$this->generateController($modelName)) {
             return false;
@@ -39,6 +39,7 @@ class AdminCRUDMakeCommand extends GeneratorCommandBase
         if (!$this->generateRequest($modelName)) {
             return false;
         }
+
         if (!$this->generateViews($modelName)) {
             return false;
         }
@@ -99,7 +100,7 @@ class AdminCRUDMakeCommand extends GeneratorCommandBase
         if (preg_match('/([A-Za-z0-9]+)(Controller)?$/', $name, $matches)) {
             $name = $matches[1];
         }
-        
+
         return ucwords($name);
     }
 
@@ -226,57 +227,51 @@ class AdminCRUDMakeCommand extends GeneratorCommandBase
      *
      * @return bool
      */
-    protected function generateViews($name)
+    protected function generateViews($modelName)
     {
+        view()->addLocation(implode(DIRECTORY_SEPARATOR, [__DIR__, 'stubs']));
+        $columns = $this->getColumnNamesAndTypes($modelName);
+
         foreach (['index', 'edit'] as $type) {
-            $path = $this->getViewPath($name, $type);
+            $path = $this->getViewPath($modelName, $type);
             if ($this->alreadyExists($path)) {
                 $this->error($path.' already exists.');
 
                 return false;
             }
-
             $this->makeDirectory($path);
 
-            $stub = $this->files->get($this->getStubForView($type));
             if ($type == 'index') {
-                $tableHeader = '';
-                $tableContent = '';
-                $columns = $this->getColumnNamesAndTypes($name);
-                foreach ($columns as $column) {
-                    if ($column['name'] == 'id' || $column['name'] == 'is_enabled') {
-                        continue;
-                    }
-                    if (\StringHelper::endsWith($column['name'], '_id')) {
-                        continue;
-                    }
-                    if ($column['type'] == 'TextType') {
-                        continue;
-                    }
-                    $tableHeader .= '                <th>{!! \PaginationHelper::sort(\''.$column['name'].'\', trans(\'admin.pages.%%classes-spinal%%.columns.'.$column['name'].'\')) !!}</th>'.PHP_EOL;
-                    $tableContent .= '               <td>{{ $%%class%%->'.$column['name'].' }}</td>'.PHP_EOL;
-                }
-                $this->replaceTemplateVariable($stub, 'TABLE_HEADER', $tableHeader);
-                $this->replaceTemplateVariable($stub, 'TABLE_CONTENT', $tableContent);
+                $fileContent = view(
+                    'crud.admin.views.' . config('view.admin') . '.index',
+                    [
+                        'modelName'  => $modelName,
+                        'objectName' => strtolower(substr($modelName, 0, 1)).substr($modelName, 1),
+                        'viewFolder' => snake_case(str_plural($modelName), '-'),
+                        'columns'    => $columns,
+                    ]
+                )->render();
+                $fileContent = str_replace('＠', '@', $fileContent);
+                $fileContent = str_replace('｛', '{', $fileContent);
+                $fileContent = str_replace('｝', '}', $fileContent);
+
+                $this->files->put($path, $fileContent);
             } elseif ($type == 'edit') {
-                $inputs = $this->generateForm($name);
-                $this->replaceTemplateVariable($stub, 'FORM', $inputs);
+                $fileContent = view(
+                    'crud.admin.views.' . config('view.admin') . '.edit',
+                    [
+                        'modelName'  => $modelName,
+                        'objectName' => strtolower(substr($modelName, 0, 1)).substr($modelName, 1),
+                        'viewFolder' => snake_case(str_plural($modelName), '-'),
+                        'columns'    => $columns,
+                    ]
+                )->render();
+                $fileContent = str_replace('＠', '@', $fileContent);
+                $fileContent = str_replace('｛', '{', $fileContent);
+                $fileContent = str_replace('｝', '}', $fileContent);
 
-                $columns = $this->getColumnNamesAndTypes($name);
-                $imageScript = '';
-                foreach ($columns as $column) {
-                    if (\StringHelper::endsWith($column['name'], 'image_id')) {
-                        $fieldName = substr($column['name'], 0, strlen($column['name']) - 9);
-                        $imageScript =        '$("#' . $fieldName . '-image").change(function (event) {'
-                        .PHP_EOL. '                $("#' . $fieldName . '-image-preview").attr("src", URL.createObjectURL(event.target.files[0]));'
-                        .PHP_EOL. '            });';
-                    }
-                }
-                $this->replaceTemplateVariable($stub, 'IMAGE_SCRIPT', $imageScript);
+                $this->files->put($path, $fileContent);
             }
-
-            $this->replaceTemplateVariables($stub, $name);
-            $this->files->put($path, $stub);
         }
 
         return true;
