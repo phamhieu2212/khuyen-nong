@@ -53,7 +53,7 @@ $factory->define(
     function (Faker\Generator $faker) {
         return [
             'admin_user_id' => $faker->randomNumber(),
-            'role'          => 'supper_user'
+            'role'          => 'supper_user',
         ];
     }
 );
@@ -65,8 +65,14 @@ $factory->define(
             'locale'                => 'ja',
             'name'                  => $faker->name,
             'title'                 => $faker->sentence,
-            'keywords'              => implode(',', $faker->words(5)),
-            'description'           => $faker->sentences(3, true),
+            'keywords'              => implode(
+                ',',
+                $faker->words(5)
+            ),
+            'description'           => $faker->sentences(
+                3,
+                true
+            ),
             'ogp_image_id'          => 0,
             'twitter_card_image_id' => 0,
         ];
@@ -103,9 +109,18 @@ $factory->define(
         return [
             'slug'               => $faker->word,
             'title'              => $faker->sentence,
-            'keywords'           => implode(',', $faker->words(5)),
-            'description'        => $faker->sentences(3, true),
-            'content'            => $faker->sentences(3, true),
+            'keywords'           => implode(
+                ',',
+                $faker->words(5)
+            ),
+            'description'        => $faker->sentences(
+                3,
+                true
+            ),
+            'content'            => $faker->sentences(
+                3,
+                true
+            ),
             'cover_image_id'     => 0,
             'locale'             => 'ja',
             'is_enabled'         => true,
@@ -143,6 +158,21 @@ $factory->define(
             'content'       => 'TEST',
             'read'          => false,
             'sent_at'       => $faker->dateTime,
+        ];
+    }
+);
+
+$factory->define(
+    App\Models\OauthClient::class,
+    function (Faker\Generator $faker) {
+        return [
+            'user_id'                => 1,
+            'name'                   => $faker->name,
+            'secret'                 => $faker->password,
+            'redirect'               => $faker->url,
+            'personal_access_client' => $faker->boolean,
+            'password_client'        => $faker->boolean,
+            'revoked'                => $faker->boolean,
         ];
     }
 );
