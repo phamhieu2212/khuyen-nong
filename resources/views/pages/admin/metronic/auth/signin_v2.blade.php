@@ -7,7 +7,7 @@
 @stop
 
 @section('scripts')
-    <script src="{!! \URLHelper::asset('metronic/snippets/custom/pages/user/login.js', 'admin') !!}"></script>
+    <script src="{!! \URLHelper::asset('libs/metronic/snippets/custom/pages/user/login.js', 'admin') !!}"></script>
 @stop
 
 @section('title')
@@ -22,7 +22,7 @@
                     <div class="m-login__wrapper" style="padding-top: 0;">
                         <div class="m-login__logo">
                             <a href="#">
-                                <img src="{!! \URLHelper::asset('metronic/app/media/img//logos/logo-2.png', 'admin') !!}">
+                                <img src="{!! \URLHelper::asset('libs/metronic/app/media/img//logos/logo-2.png', 'admin') !!}">
                             </a>
                         </div>
                         <div class="m-login__signin">
@@ -144,7 +144,7 @@
             </div>
         </div>
 
-        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url({!! \URLHelper::asset('metronic/app/media/img//bg/bg-4.jpg', 'admin') !!}); padding: 0;">
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url({!! \URLHelper::asset('libs/metronic/app/media/img//bg/bg-4.jpg', 'admin') !!}); padding: 0;">
             <div class="m-grid__item m-grid__item--middle">
                 <h3 class="m-login__welcome">
                     Join Our Community

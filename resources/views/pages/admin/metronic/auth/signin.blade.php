@@ -7,7 +7,7 @@
 @stop
 
 @section('scripts')
-    <script src="{!! \URLHelper::asset('metronic/snippets/custom/pages/user/login.js', 'admin') !!}"></script>
+    <script src="{!! \URLHelper::asset('libs/metronic/snippets/custom/pages/user/login.js', 'admin') !!}"></script>
 @stop
 
 @section('title')
@@ -15,12 +15,12 @@
 @stop
 
 @section('content')
-    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-1" id="m_login" style="background-image: url({!! \URLHelper::asset('metronic/app/media/img//bg/bg-1.jpg', 'admin') !!});">
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor m-login m-login--signin m-login--2 m-login-2--skin-1" id="m_login" style="background-image: url({!! \URLHelper::asset('libs/metronic/app/media/img//bg/bg-1.jpg', 'admin') !!});">
         <div class="m-grid__item m-grid__item--fluid m-login__wrapper">
             <div class="m-login__container">
                 <div class="m-login__logo">
                     <a href="#">
-                        <img src="{!! \URLHelper::asset('metronic/app/media/img//logos/logo-1.png', 'admin') !!}"> </a>
+                        <img src="{!! \URLHelper::asset('libs/metronic/app/media/img//logos/logo-1.png', 'admin') !!}"> </a>
                 </div>
                 <div class="m-login__signin">
                     <div class="m-login__head">

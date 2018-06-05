@@ -7,7 +7,7 @@
 @stop
 
 @section('scripts')
-    <script src="{!! \URLHelper::asset('metronic/app/js/dashboard.js', 'admin') !!}"></script>
+    <script src="{!! \URLHelper::asset('libs/metronic/app/js/dashboard.js', 'admin') !!}"></script>
 @stop
 
 @section('title')

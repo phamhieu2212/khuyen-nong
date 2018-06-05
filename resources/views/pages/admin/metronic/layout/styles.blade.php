@@ -11,8 +11,8 @@
 <!--end::Web font -->
 
 <!--begin::Base Styles -->
-<link rel="stylesheet" type="text/css" href="{!! \URLHelper::asset('metronic/vendors/base/vendors.bundle.css', 'admin') !!}">
-<link rel="stylesheet" type="text/css" href="{!! \URLHelper::asset('metronic/demo/default/base/style.bundle.css', 'admin') !!}">
+<link rel="stylesheet" type="text/css" href="{!! \URLHelper::asset('libs/metronic/vendors/base/vendors.bundle.css', 'admin') !!}">
+<link rel="stylesheet" type="text/css" href="{!! \URLHelper::asset('libs/metronic/demo/default/base/style.bundle.css', 'admin') !!}">
 <link rel="stylesheet" type="text/css" href="{!! \URLHelper::asset('metronic/css/styles.css', 'admin') !!}">
 <!--end::Base Styles -->
 

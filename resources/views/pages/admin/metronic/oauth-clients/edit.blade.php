@@ -16,7 +16,7 @@
 
 @section('scripts')
     <script src="{!! \URLHelper::asset('adminlte/js/delete_item.js', 'admin') !!}"></script>
-    <script src="{!! \URLHelper::asset('metronic/demo/default/custom/crud/forms/validation/form-controls.js', 'admin') !!}"></script>
+    <script src="{!! \URLHelper::asset('libs/metronic/demo/default/custom/crud/forms/validation/form-controls.js', 'admin') !!}"></script>
 @stop
 
 @section('title')
