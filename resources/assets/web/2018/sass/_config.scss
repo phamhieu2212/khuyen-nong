@@ -12,6 +12,12 @@ $background: #f8f9fa;
 	display: block;
 }
 
+body {
+	width: 100%;
+	overflow-x: hidden;
+	font-family: "Roboto-Light";
+}
+
 .font-roboto {
 	font-family: "Roboto";
 }
