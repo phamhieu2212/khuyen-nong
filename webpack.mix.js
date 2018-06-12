@@ -18,20 +18,23 @@ mix
         'popper.js/dist/umd/popper.js': ['Popper', 'window.Popper']
     })
 
+    //for metronic
+    .copyDirectory("node_modules/ion-rangeslider/img/sprite-skin-flat.png", 'public/static/common/libs/metronic/fonts')
+    .copyDirectory("node_modules/summernote/dist/font/**", 'public/static/common/libs/metronic/fonts')
+    .copyDirectory("node_modules/jstree/dist/themes/default/40px.png", 'public/static/common/libs/metronic/fonts')
+    .copyDirectory("node_modules/jstree/dist/themes/default/*.gif", 'public/static/common/libs/metronic/fonts')
+    .copyDirectory("node_modules/socicon/font/**", 'public/static/common/libs/metronic/fonts')
+    .copyDirectory("node_modules/font-awesome/fonts/**", 'public/static/common/libs/metronic/fonts')
+    .copyDirectory("public/static/common/libs/line-awesome/fonts/**", 'public/static/common/libs/metronic/fonts')
+    .copyDirectory("public/static/common/libs/flaticon/fonts/**", 'public/static/common/libs/metronic/fonts')
+
+    // for front-end
     .copyDirectory('node_modules/roboto-fontface/fonts', 'public/static/web/fonts')
-    .copyDirectory("node_modules/ion-rangeslider/img/sprite-skin-flat.png", 'public/static/web/2018/fonts')
-    .copyDirectory("node_modules/summernote/dist/font/**", 'public/static/web/2018/fonts')
-    .copyDirectory("node_modules/jstree/dist/themes/default/40px.png", 'public/static/web/2018/fonts')
-    .copyDirectory("node_modules/jstree/dist/themes/default/*.gif", 'public/static/web/2018/fonts')
-    .copyDirectory("node_modules/socicon/font/**", 'public/static/web/2018/fonts')
-    .copyDirectory("node_modules/font-awesome/fonts/**", 'public/static/web/2018/fonts')
-    .copyDirectory("public/static/common/libs/line-awesome/fonts/**", 'public/static/web/2018/fonts')
-    .copyDirectory("public/static/common/libs/flaticon/fonts/**", 'public/static/web/2018/fonts')
-    .copyDirectory("public/static/common/libs/metronic/fonts/**", 'public/static/web/2018/fonts')
+    .copyDirectory("public/static/common/libs/metronic/fonts", 'public/static/web/2018/fonts')
 
     .sass(
         'resources/assets/metronic/src/sass/demo/default/style.scss',
-        'public/static/web/2018/css/metronic-demo.css'
+        'public/static/common/libs/metronic/css/demo.css'
     )
 
     .sass(
@@ -74,11 +77,9 @@ mix
             "public/static/common/libs/line-awesome/css/line-awesome.css",
             "public/static/common/libs/flaticon/css/flaticon.css",
             "public/static/common/libs/metronic/css/styles.css",
-
-            "public/static/web/2018/css/metronic-demo.css",
-            "public/static/web/2018/css/application.css"
+            "public/static/common/libs/metronic/css/demo.css"
         ],
-        'public/static/web/2018/css/styles.css'
+        'public/static/common/libs/metronic/css/final.css'
     )
     .scripts(
         [
@@ -143,6 +144,22 @@ mix
             "resources/assets/metronic/src/js/demo/default/base/*.js",
             "resources/assets/metronic/src/js/app/base/*.js",
             "resources/assets/metronic/src/js/snippets/base/*.js"
+        ],
+        'public/static/common/libs/metronic/js/final.js'
+    );
+
+mix
+    .styles(
+        [
+            'public/static/common/libs/metronic/css/final.css',
+            "public/static/web/2018/css/application.css"
+        ],
+        "public/static/web/2018/css/styles.css"
+    )
+    .scripts(
+        [
+            'public/static/common/libs/metronic/js/final.js',
+            'resources/assets/web/2018/js/homepage.js'
         ],
         'public/static/web/2018/js/scripts.js'
     );
