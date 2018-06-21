@@ -248,8 +248,19 @@ class BaseRepository implements BaseRepositoryInterface
                         }
                     }
                 });
-                unset($filter['query']);
             }
+            unset($filter['query']);
+        }
+
+        if(array_key_exists('whereNotIn', $filter)) {
+            $params = array_get($filter, 'whereNotIn');
+            foreach ($params as $column => $values) {
+                if (is_array($values)) {
+                    $query = $query->whereNotIn($tableName.'.'.$column, $values);
+                }
+            }
+
+            unset($filter['whereNotIn']);
         }
 
         foreach ($filter as $column => $value) {
