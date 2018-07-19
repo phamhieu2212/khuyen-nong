@@ -177,4 +177,32 @@ $factory->define(
     }
 );
 
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+    ];
+});
+
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+    ];
+});
+
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+    ];
+});
+
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

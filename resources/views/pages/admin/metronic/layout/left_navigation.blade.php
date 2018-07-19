@@ -25,18 +25,6 @@
                 </a>
             </li>
 
-            <li class="m-menu__item @if( $menu=='articles') m-menu__item--active @endif" aria-haspopup="true">
-                <a href="{!! \URL::action('Admin\ArticleController@index') !!}" class="m-menu__link ">
-                    <i class="m-menu__link-icon la la-file-text"></i>
-                    <span class="m-menu__link-title">
-                        <span class="m-menu__link-wrap">
-                            <span class="m-menu__link-text">
-                                @lang('admin.menu.articles')
-                            </span>
-                        </span>
-                    </span>
-                </a>
-            </li>
 
             @if( $authUser->hasRole(\App\Models\AdminUserRole::ROLE_ADMIN) )
                 <li class="m-menu__section ">
@@ -59,39 +47,14 @@
                     </a>
                 </li>
 
-                <li class="m-menu__item @if( $menu=='admin_user_notifications') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\AdminUserNotificationController@index') !!}" class="m-menu__link ">
-                    <i class="m-menu__link-icon la la-bell-o"></i>
-                    <span class="m-menu__link-title">
-                        <span class="m-menu__link-wrap">
-                            <span class="m-menu__link-text">
-                                @lang('admin.menu.admin_user_notifications')
-                            </span>
-                        </span>
-                    </span>
-                    </a>
-                </li>
 
-                <li class="m-menu__item @if( $menu=='users') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\UserController@index') !!}" class="m-menu__link ">
-                    <i class="m-menu__link-icon la la-users"></i>
-                    <span class="m-menu__link-title">
-                        <span class="m-menu__link-wrap">
-                            <span class="m-menu__link-text">
-                                @lang('admin.menu.users')
-                            </span>
-                        </span>
-                    </span>
-                    </a>
-                </li>
-
-                <li class="m-menu__item @if( $menu=='user_notifications') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\UserNotificationController@index') !!}" class="m-menu__link ">
+                <li class="m-menu__item @if( $menu=='categories') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\CategoryController@index') !!}" class="m-menu__link ">
                     <i class="m-menu__link-icon la la-bell"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.user_notifications')
+                                @lang('admin.menu.categories')
                             </span>
                         </span>
                     </span>

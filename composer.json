@@ -31,7 +31,7 @@
     "barryvdh/laravel-ide-helper": "^2.1",
     "symfony/css-selector": "3.1.*",
     "symfony/dom-crawler": "3.1.*",
-    "doctrine/dbal": "~2.3",
+    "doctrine/dbal": "2.6.*",
     "laravel/browser-kit-testing": "^2.0"
   },
   "autoload": {
