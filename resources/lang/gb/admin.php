@@ -11,6 +11,7 @@ return [
         'log_system'               => 'Logs System',
         'images'                   => 'Images',
         'articles'                 => 'Articles',
+        'categories'               => 'Categories',
     ],
     'breadcrumb' => [
         'dashboard'                => 'Dashboard',
@@ -221,10 +222,17 @@ return [
                 'revoked'                => 'Revoked',
             ],
         ],
+        'categories'   => [
+            'columns'  => [
+                'name' => 'Name',
+            ],
+        ],
         /* NEW PAGE STRINGS */
     ],
     'roles'      => [
         'super_user' => 'Super User',
         'admin'      => 'Administrator',
+        'htx'        => 'HTX',
+        'farmer'     => 'Farmer',
     ],
 ];
