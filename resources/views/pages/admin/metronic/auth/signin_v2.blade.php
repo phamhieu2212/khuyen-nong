@@ -28,7 +28,7 @@
                         <div class="m-login__signin">
                             <div class="m-login__head">
                                 <h3 class="m-login__title">
-                                    Sign In To Admin
+                                    Đăng Nhập
                                 </h3>
                             </div>
                             <form class="m-login__form m-form" action="{!! action('Admin\AuthController@postSignIn') !!}" method="POST">
@@ -38,23 +38,23 @@
                                     <input class="form-control m-input" type="email" placeholder="Email" name="email" autocomplete="off">
                                 </div>
                                 <div class="form-group m-form__group">
-                                    <input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
+                                    <input class="form-control m-input m-login__form-input--last" type="password" placeholder="Mật khẩu" name="password">
                                 </div>
                                 <div class="row m-login__form-sub">
                                     <div class="col m--align-left">
                                         <label class="m-checkbox m-checkbox--focus">
-                                            <input id="remember_me" type="checkbox" name="remember_me" value="1"> Remember me <span></span>
+                                            <input id="remember_me" type="checkbox" name="remember_me" value="1"> Lưu đăng nhập <span></span>
                                         </label>
                                     </div>
                                     <div class="col m--align-right">
                                         <a href="javascript:;" id="m_login_forget_password" class="m-link">
-                                            Forget Password ?
+                                            Quên mật khẩu ?
                                         </a>
                                     </div>
                                 </div>
                                 <div class="m-login__form-action">
                                     <button type="submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">
-                                        Sign In
+                                        Đăng Nhập
                                     </button>
                                 </div>
                             </form>
@@ -146,13 +146,13 @@
 
         <div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content" style="background-image: url({!! \URLHelper::asset('libs/metronic/app/media/img//bg/bg-4.jpg', 'admin') !!}); padding: 0;">
             <div class="m-grid__item m-grid__item--middle">
-                <h3 class="m-login__welcome">
-                    Join Our Community
+                <h3 class="m-login__welcome text-center">
+                    Hội Khuyến Nông Tỉnh <br> Phú Thọ
                 </h3>
                 <p class="m-login__msg">
-                    Lorem ipsum dolor sit amet, coectetuer adipiscing
+                    Tiên phong trong công tác quản lý và sản xuất thực phẩm sạch
                     <br>
-                    elit sed diam nonummy et nibh euismod
+                    Đảm bảo an toàn vệ sinh và sức khoẻ người tiêu dùng
                 </p>
             </div>
         </div>

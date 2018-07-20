@@ -53,7 +53,7 @@
     @else
         <li class="m-nav__separator"> / </li>
         <li class="m-nav__item">
-            {{ $category->id }}
+            {{ $adminUser->id }}
         </li>
     @endif
 @stop
@@ -71,7 +71,7 @@
             <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
                     <li class="m-portlet__nav-item">
-                        <a href="{!! action('Admin\CategoryController@index') !!}" class="btn m-btn--pill m-btn--air btn-secondary btn-sm" style="width: 120px;">
+                        <a href="{!! action('Admin\AdminUserController@index') !!}" class="btn m-btn--pill m-btn--air btn-secondary btn-sm" style="width: 120px;">
                             @lang('admin.pages.common.buttons.back')
                         </a>
                     </li>
@@ -80,7 +80,7 @@
         </div>
 
         <div class="m-portlet__body">
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\CategoryController@store') !!}@else{!! action('Admin\CategoryController@update', [$category->id]) !!}@endif" method="POST">
+            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\AdminUserController@store') !!}@else{!! action('Admin\AdminUserController@update', [$adminUser->id]) !!}@endif" method="POST">
                 @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
                 {!! csrf_field() !!}
 
@@ -89,7 +89,7 @@
                         <div class="col-md-12">
                             <div class="form-group m-form__group row">
                                 <label for="name">@lang('admin.pages.categories.columns.name')</label>
-                                <input type="text" class="form-control m-input" name="name" id="name" required placeholder="@lang('admin.pages.categories.columns.name')" value="{{ old('name') ? old('name') : @$category->name }}">
+                                <input type="text" class="form-control m-input" name="name" id="name" required placeholder="@lang('admin.pages.categories.columns.name')" value="{{ old('name') ? old('name') : @$adminUser->name }}">
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                     <div class="m-form__actions m-form__actions">
                         <div class="row">
                             <div class="col-lg-9 ml-lg-auto">
-                                <a href="{!! action('Admin\CategoryController@index') !!}" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-accent" style="width: 120px;">
+                                <a href="{!! action('Admin\AdminUserController@index') !!}" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-accent" style="width: 120px;">
                                     @lang('admin.pages.common.buttons.cancel')
                                 </a>
                                 <button type="submit" class="btn m-btn--pill m-btn--air btn-primary m-btn m-btn--custom" style="width: 120px;">
