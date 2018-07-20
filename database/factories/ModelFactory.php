@@ -205,4 +205,13 @@ $factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'category_id' => '',
+        'cover_image_id' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

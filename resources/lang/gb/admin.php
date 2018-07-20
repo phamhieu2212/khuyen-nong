@@ -12,6 +12,7 @@ return [
         'images'                   => 'Images',
         'articles'                 => 'Articles',
         'categories'               => 'Categories',
+        'products'                 => 'Products',
     ],
     'breadcrumb' => [
         'dashboard'                => 'Dashboard',
@@ -225,6 +226,13 @@ return [
         'categories'   => [
             'columns'  => [
                 'name' => 'Name',
+            ],
+        ],
+        'products'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'category_id' => 'Category_id',
+                'cover_image_id' => 'Cover_image_id',
             ],
         ],
         /* NEW PAGE STRINGS */
