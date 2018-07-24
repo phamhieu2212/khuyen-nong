@@ -38,6 +38,9 @@
             \Route::resource('admin-user-notifications', 'Admin\AdminUserNotificationController');
             
             \Route::get('load-notification/{offset}', 'Admin\AdminUserNotificationController@loadNotification');
+            \Route::resource('categories', 'Admin\CategoryController');
+            \Route::resource('products', 'Admin\ProductController');
+            \Route::resource('certificates', 'Admin\CertificateController');
         });
 
         \Route::get('/', 'Admin\IndexController@index');
@@ -48,8 +51,6 @@
 
         \Route::post('signout', 'Admin\AuthController@postSignOut');
 
-        \Route::resource('categories', 'Admin\CategoryController');
-        \Route::resource('products', 'Admin\ProductController');
         /* NEW ADMIN RESOURCE ROUTE */
 
     });

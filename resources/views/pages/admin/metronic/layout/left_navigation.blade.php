@@ -72,6 +72,18 @@
                     </span>
                     </a>
                 </li>
+                <li class="m-menu__item @if( $menu=='certificates') m-menu__item--active @endif" aria-haspopup="true">
+                    <a href="{!! \URL::action('Admin\CertificateController@index') !!}" class="m-menu__link ">
+                        <i class="m-menu__link-icon la la-bell"></i>
+                    <span class="m-menu__link-title">
+                        <span class="m-menu__link-wrap">
+                            <span class="m-menu__link-text">
+                                @lang('admin.menu.certificates')
+                            </span>
+                        </span>
+                    </span>
+                    </a>
+                </li>
             @endif
 
             @if( $authUser->hasRole(\App\Models\AdminUserRole::ROLE_SUPER_USER) )

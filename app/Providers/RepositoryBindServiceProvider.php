@@ -111,6 +111,11 @@ class RepositoryBindServiceProvider extends ServiceProvider {
             \App\Repositories\Eloquent\ProductRepository::class
         );
 
+        $this->app->singleton(
+            \App\Repositories\CertificateRepositoryInterface::class,
+            \App\Repositories\Eloquent\CertificateRepository::class
+        );
+
         /* NEW BINDING */
     }
 }
