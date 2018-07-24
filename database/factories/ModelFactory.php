@@ -214,4 +214,15 @@ $factory->define(App\Models\Product::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Certificate::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+        'type' => '',
+        'description' => '',
+        'logo_image_id' => '',
+        'cover_image_id' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

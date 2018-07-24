@@ -13,6 +13,7 @@ return [
         'articles'                 => 'Articles',
         'categories'               => 'Categories',
         'products'                 => 'Products',
+        'certificates'             => 'Certificates'
     ],
     'breadcrumb' => [
         'dashboard'                => 'Dashboard',
@@ -232,6 +233,15 @@ return [
             'columns'  => [
                 'name' => 'Name',
                 'category_id' => 'Category_id',
+                'cover_image_id' => 'Cover_image_id',
+            ],
+        ],
+        'certificates'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'type' => 'Type',
+                'description' => 'Description',
+                'logo_image_id' => 'Logo_image_id',
                 'cover_image_id' => 'Cover_image_id',
             ],
         ],
