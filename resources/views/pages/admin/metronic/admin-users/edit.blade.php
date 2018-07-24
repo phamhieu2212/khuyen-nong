@@ -107,17 +107,27 @@
 
                     <div class="form-group m-form__group">
                         <label for="exampleSelect1">Vai trò</label>
-                        <select class="form-control m-input" id="exampleSelect1">
-                            <option>Super admin</option>
-                            <option>Quản lý</option>
-                            <option>Hợp tác xã</option>
-                            <option>Nông dân</option>
+                        <select name="role" class="form-control m-input" id="exampleSelect1">
+                            <option value="super_user">Super admin</option>
+                            <option value="admin">Quản lý</option>
+                            <option value="htx">Hợp tác xã</option>
+                            <option value="farmer">Nông dân</option>
                         </select>
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleSelect1">Chứng chỉ</label>
                         <select class="form-control m-input" id="exampleSelect1">
                             <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleSelect1">Đơn vị quản lý</label>
+                        <select class="form-control m-input" id="exampleSelect1">
+                            <option>Không có</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
