@@ -13,7 +13,8 @@ return [
         'articles'                 => 'Articles',
         'categories'               => 'Categories',
         'products'                 => 'Products',
-        'certificates'             => 'Certificates'
+        'certificates'             => 'Certificates',
+        'htxes'                    => 'Htx'
     ],
     'breadcrumb' => [
         'dashboard'                => 'Dashboard',
@@ -243,6 +244,12 @@ return [
                 'description' => 'Description',
                 'logo_image_id' => 'Logo_image_id',
                 'cover_image_id' => 'Cover_image_id',
+            ],
+        ],
+        'htxes'   => [
+            'columns'  => [
+                'name' => 'Name',
+                'address' => 'Address',
             ],
         ],
         /* NEW PAGE STRINGS */

@@ -116,6 +116,11 @@ class RepositoryBindServiceProvider extends ServiceProvider {
             \App\Repositories\Eloquent\CertificateRepository::class
         );
 
+        $this->app->singleton(
+            \App\Repositories\HtxRepositoryInterface::class,
+            \App\Repositories\Eloquent\HtxRepository::class
+        );
+
         /* NEW BINDING */
     }
 }

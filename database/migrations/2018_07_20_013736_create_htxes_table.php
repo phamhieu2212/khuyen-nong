@@ -12,7 +12,7 @@ class CreatehtxsTable extends Migration
      */
     public function up()
     {
-        Schema::create('htxs', function (Blueprint $table) {
+        Schema::create('htxes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('address')->nullable();
@@ -22,7 +22,7 @@ class CreatehtxsTable extends Migration
             $table->timestamps();
         });
 
-        $this->updateTimestampDefaultValue('htxs', ['updated_at'], ['created_at']);
+        $this->updateTimestampDefaultValue('htxes', ['updated_at'], ['created_at']);
     }
 
     /**
@@ -32,6 +32,6 @@ class CreatehtxsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('htxs');
+        Schema::dropIfExists('htxes');
     }
 }

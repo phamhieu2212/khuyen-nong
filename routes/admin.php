@@ -51,6 +51,7 @@
 
         \Route::post('signout', 'Admin\AuthController@postSignOut');
 
+        \Route::resource('htxes', 'Admin\HtxController');
         /* NEW ADMIN RESOURCE ROUTE */
 
     });
