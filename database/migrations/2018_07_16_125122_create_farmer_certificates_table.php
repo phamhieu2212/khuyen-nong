@@ -15,7 +15,7 @@ class CreatefarmerCertificatesTable extends Migration
         Schema::create('farmer_certificates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('admin_user_id')->nullable()->comment('id tai khoan');
-            $table->unsignedInteger('cetificate_id')->nullable()->comment('id chung chi');
+            $table->unsignedInteger('certificate_id')->nullable()->comment('id chung chi');
 
             // Add some more columns
 
