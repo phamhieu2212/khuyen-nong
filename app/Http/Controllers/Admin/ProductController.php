@@ -4,23 +4,31 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Repositories\ActionRepositoryInterface;
 use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\ProductRepositoryInterface;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Http\Requests\PaginationRequest;
+use App\Repositories\UnitRepositoryInterface;
 
 class ProductController extends Controller
 {
     /** @var  \App\Repositories\ProductRepositoryInterface */
     protected $productRepository;
     protected $categoryRepository;
+    protected $unitRepository;
+    protected $actionRepository;
 
     public function __construct(
         ProductRepositoryInterface $productRepository,
-        CategoryRepositoryInterface $categoryRepository
+        CategoryRepositoryInterface $categoryRepository,
+        UnitRepositoryInterface     $unitRepository,
+        ActionRepositoryInterface   $actionRepository
     ) {
         $this->productRepository = $productRepository;
         $this->categoryRepository = $categoryRepository;
+        $this->unitRepository     = $unitRepository;
+        $this->actionRepository   = $actionRepository;
     }
 
     /**
@@ -70,6 +78,9 @@ class ProductController extends Controller
                 'isNew'     => true,
                 'products'  => $this->productRepository->getBlankModel(),
                 'categories'=> $this->categoryRepository->all(),
+                'actions'   => $this->actionRepository->all(),
+                'units'     => $this->unitRepository->all()
+
 
             ]
         );

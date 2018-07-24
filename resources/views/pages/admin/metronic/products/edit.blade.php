@@ -4,7 +4,16 @@
 @stop
 
 @section('styles')
+    <link rel="stylesheet" href="{!! \URLHelper::asset('libs/plugins/select2/select2.min.css', 'admin') !!}">
     <style>
+        .select2-container .select2-selection--single {
+            height: 33px;
+            border-radius: 0px;
+            margin-right: 5px;
+            border: solid 0.5px;
+            border-color: #d2d6de;
+            box-shadow: none !important;
+        }
         .row {
             margin-bottom: 15px;
         }
@@ -12,19 +21,18 @@
 @stop
 
 @section('scripts')
-    <script src="{!! \URLHelper::asset('metronic/demo/default/custom/crud/forms/validation/form-controls.js', 'admin') !!}"></script>
+    <script src="{{ \URLHelper::asset('libs/moment/moment.min.js', 'admin') }}"></script>
+    <script src="{{ \URLHelper::asset('libs/datetimepicker/js/bootstrap-datetimepicker.min.js', 'admin') }}"></script>
+    <script src="{{ \URLHelper::asset('libs/plugins/select2/select2.full.min.js', 'admin') }}"></script>
     <script>
-        $(document).ready(function () {
-            $('#cover-image').change(function (event) {
-                $('#cover-image-preview').attr('src', URL.createObjectURL(event.target.files[0]));
-            });
-
-            $('.datetime-picker').datetimepicker({
-                todayHighlight: true,
-                autoclose: true,
-                pickerPosition: 'bottom-left',
-                format: 'yyyy/mm/dd hh:ii'
-            });
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+        $('.datetime-picker').datetimepicker({
+            todayHighlight: true,
+            autoclose: true,
+            pickerPosition: 'bottom-left',
+            format: 'yyyy/mm/dd hh:ii'
         });
     </script>
 @stop
@@ -104,8 +112,8 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                                                                                                                            <div class="row">
+                    </div>
+                    <div class="row">
                                 {{--<div class="col-md-12">--}}
                                     {{--<div class="form-group m-form__group row" style="max-width: 500px;">--}}
                                         {{--@if( !empty($product->present()->coverImage()) )--}}
@@ -120,7 +128,31 @@
                                         {{--</p>--}}
                                     {{--</div>--}}
                                 {{--</div>--}}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row">
+                                <label class="col-form-label">Đơn vị</label>
+                                <select class="form-control js-example-basic-multiple" id="m_select2_3" name="unit_id[]" multiple="multiple">
+                                    @foreach($units as $unit)
+                                        <option value="{{$unit->id}}">{{$unit->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group m-form__group row">
+                                <label class="col-form-label">Hành động</label>
+                                <select class="form-control js-example-basic-multiple" id="m_select2_4" name="action_id[]" multiple="multiple">
+                                    @foreach($actions as $action)
+                                        <option value="{{$action->id}}">{{$action->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
