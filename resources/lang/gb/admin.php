@@ -245,6 +245,10 @@ return [
                 'cover_image_id' => 'Cover_image_id',
             ],
         ],
+        'htxes'   => [
+            'columns'  => [
+            ],
+        ],
         /* NEW PAGE STRINGS */
     ],
     'roles'      => [
