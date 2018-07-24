@@ -115,6 +115,8 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
+                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.htxes.columns.name')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('address', trans('admin.pages.htxes.columns.address')) !!}</th>
                                     
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
