@@ -15,6 +15,7 @@ class CreateAdminUsersTable extends Migration
 
             $table->string('name');
             $table->string('email');
+            $table->string('phone');
             $table->string('password', 60);
 
             $table->string('locale')->default('');
@@ -24,6 +25,7 @@ class CreateAdminUsersTable extends Migration
             $table->string('api_access_token')->default('');
 
             $table->unsignedBigInteger('profile_image_id')->default(0);
+            $table->bigInteger('htx_id')->default(0);
 
             $table->rememberToken();
             $table->softDeletes();

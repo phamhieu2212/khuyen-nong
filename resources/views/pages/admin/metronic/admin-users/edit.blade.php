@@ -80,36 +80,65 @@
         </div>
 
         <div class="m-portlet__body">
-            <form class="m-form m-form--fit" action="@if($isNew){!! action('Admin\AdminUserController@store') !!}@else{!! action('Admin\AdminUserController@update', [$adminUser->id]) !!}@endif" method="POST">
-                @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
-                {!! csrf_field() !!}
+            <!--begin::Form-->
+            <form class="m-form m-form--fit m-form--label-align-right">
+                <div class="m-portlet__body">
+                    {{--<div class="form-group m-form__group m--margin-top-10">--}}
+                        {{--<div class="alert m-alert m-alert--default" role="alert">--}}
+                            {{--The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    <div class="form-group m-form__group">
+                        <label for="exampleInputName1">Name</label>
+                        <input name="name" type="name" class="form-control m-input" id="exampleInputName1" placeholder="Enter name">
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input name="email" type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <span class="m-form__help">We'll never share your email with anyone else.</span>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input name="password" type="password" class="form-control m-input" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="example-tel-input">Telephone</label>
+                        <input name="phone" class="form-control m-input" type="tel" id="example-tel-input">
+                    </div>
 
-                <div class="m-portlet__body" style="padding-top: 0;">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group m-form__group row">
-                                <label for="name">@lang('admin.pages.categories.columns.name')</label>
-                                <input type="text" class="form-control m-input" name="name" id="name" required placeholder="@lang('admin.pages.categories.columns.name')" value="{{ old('name') ? old('name') : @$adminUser->name }}">
-                            </div>
-                        </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleSelect1">Example select</label>
+                        <select class="form-control m-input" id="exampleSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleSelect2">Example multiple select</label>
+                        <select multiple="" class="form-control m-input" id="exampleSelect2">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleTextarea">Example textarea</label>
+                        <textarea class="form-control m-input" id="exampleTextarea" rows="3"></textarea>
                     </div>
                 </div>
-
                 <div class="m-portlet__foot m-portlet__foot--fit">
-                    <div class="m-form__actions m-form__actions">
-                        <div class="row">
-                            <div class="col-lg-9 ml-lg-auto">
-                                <a href="{!! action('Admin\AdminUserController@index') !!}" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-accent" style="width: 120px;">
-                                    @lang('admin.pages.common.buttons.cancel')
-                                </a>
-                                <button type="submit" class="btn m-btn--pill m-btn--air btn-primary m-btn m-btn--custom" style="width: 120px;">
-                                    @lang('admin.pages.common.buttons.save')
-                                </button>
-                            </div>
-                        </div>
+                    <div class="m-form__actions">
+                        <button type="reset" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
                     </div>
                 </div>
             </form>
+            <!--end::Form-->
         </div>
     </div>
 @stop
