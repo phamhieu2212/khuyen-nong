@@ -95,7 +95,7 @@
                             </div>
                     <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group m-form__group">
+                                    <div class="form-group m-form__group row">
                                         <label for="exampleSelect1">Danh mục</label>
                                         <select name="category_id" class="form-control m-input" id="exampleSelect1">
                                             @foreach($categories as $category)
@@ -121,7 +121,7 @@
                                     {{--</div>--}}
                                 {{--</div>--}}
                             </div>
-                                                            </div>
+                </div>
 
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions m-form__actions">
