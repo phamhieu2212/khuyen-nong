@@ -225,4 +225,9 @@ $factory->define(App\Models\Certificate::class, function (Faker\Generator $faker
     ];
 });
 
+$factory->define(App\Models\Htx::class, function (Faker\Generator $faker) {
+    return [
+    ];
+});
+
 /* NEW MODEL FACTORY */
