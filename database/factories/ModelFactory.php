@@ -252,4 +252,11 @@ $factory->define(App\Models\Farmer::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Unit::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'name' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

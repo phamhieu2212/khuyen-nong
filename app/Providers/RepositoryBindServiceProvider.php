@@ -131,6 +131,11 @@ class RepositoryBindServiceProvider extends ServiceProvider {
             \App\Repositories\Eloquent\FarmerRepository::class
         );
 
+        $this->app->singleton(
+            \App\Repositories\UnitRepositoryInterface::class,
+            \App\Repositories\Eloquent\UnitRepository::class
+        );
+
         /* NEW BINDING */
     }
 }
