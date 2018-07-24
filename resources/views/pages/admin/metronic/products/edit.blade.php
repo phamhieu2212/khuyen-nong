@@ -85,7 +85,7 @@
                 {!! csrf_field() !!}
 
                 <div class="m-portlet__body" style="padding-top: 0;">
-                                                                        <div class="row">
+                    <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group m-form__group row">
                                         <label for="name">@lang('admin.pages.products.columns.name')</label>
@@ -93,11 +93,15 @@
                                     </div>
                                 </div>
                             </div>
-                                                                                                <div class="row">
+                    <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group m-form__group row">
-                                        <label for="category_id">@lang('admin.pages.products.columns.category_id')</label>
-                                        <input type="number" min="0" class="form-control m-input" name="category_id" id="category_id" required placeholder="@lang('admin.pages.products.columns.category_id')" value="{{ old('category_id') ? old('category_id') : @$product->category_id }}">
+                                    <div class="form-group m-form__group">
+                                        <label for="exampleSelect1">Danh mục</label>
+                                        <select name="category_id" class="form-control m-input" id="exampleSelect1">
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
