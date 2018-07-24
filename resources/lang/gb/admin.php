@@ -258,6 +258,11 @@ return [
                 'name' => 'Name',
             ],
         ],
+        'actions'   => [
+            'columns'  => [
+                'name' => 'Name',
+            ],
+        ],
         /* NEW PAGE STRINGS */
     ],
     'roles'      => [
