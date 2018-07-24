@@ -131,13 +131,13 @@
                                         <td>
                                             <a href="{!! action('Admin\HtxController@show', $htx->id) !!}" class="btn btn-outline-primary btn-sm m-btn m-btn--icon">
                                                 <span>
-                                                    <i class="fa fa-edit"></i>
+                                                    <i class="la la-edit"></i>
                                                     <span>Sửa</span>
                                                 </span>
                                             </a>
                                             <a href="#" data-delete-url="{!! action('Admin\HtxController@destroy', [$htx->id]) !!}" class="btn btn-outline-primary btn-sm m-btn m-btn--icon">
                                                 <span>
-                                                    <i class="fa fa-trash"></i>
+                                                    <i class="la la-trash"></i>
                                                     <span>Xoá</span>
                                                 </span>
                                             </a>

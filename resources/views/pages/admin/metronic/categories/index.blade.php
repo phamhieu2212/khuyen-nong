@@ -133,13 +133,13 @@
                                         <td>
                                             <a href="{!! action('Admin\CategoryController@show', $category->id) !!}" class="btn btn-outline-primary btn-sm m-btn m-btn--icon">
                                                 <span>
-                                                    <i class="fa fa-edit"></i>
+                                                    <i class="la la-edit"></i>
                                                     <span>Sửa</span>
                                                 </span>
                                             </a>
                                             <a href="#" data-delete-url="{!! action('Admin\CategoryController@destroy', [$category->id]) !!}" class="btn btn-outline-primary btn-sm m-btn m-btn--icon">
                                                 <span>
-                                                    <i class="fa fa-trash"></i>
+                                                    <i class="la la-trash"></i>
                                                     <span>Xoá</span>
                                                 </span>
                                             </a>
