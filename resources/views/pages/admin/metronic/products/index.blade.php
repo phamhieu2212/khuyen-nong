@@ -129,12 +129,18 @@
                                         <td>{{ $product->name }}</td>
                                         <td>{{ @$product->category->name }}</td>
 
-                                                                                                                                                                                                                                                                        <td>
-                                            <a href="{!! action('Admin\ProductController@show', $product->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
-                                                <i class="fa fa-edit"></i>
+                                        <td>
+                                            <a href="{!! action('Admin\ProductController@show', $product->id) !!}" class="btn btn-outline-primary btn-sm m-btn m-btn--icon">
+                                                <span>
+                                                    <i class="fa fa-edit"></i>
+                                                    <span>Sửa</span>
+                                                </span>
                                             </a>
-                                            <a href="javascript:;" data-delete-url="{!! action('Admin\ProductController@destroy', $product->id) !!}" class="btn m--font-danger m-btn--pill m-btn--air no-padding delete-button">
-                                                <i class="fa fa-trash"></i>
+                                            <a href="#" data-delete-url="{!! action('Admin\ProductController@destroy', [$product->id]) !!}" class="btn btn-outline-primary btn-sm m-btn m-btn--icon">
+                                                <span>
+                                                    <i class="fa fa-trash"></i>
+                                                    <span>Xoá</span>
+                                                </span>
                                             </a>
                                         </td>
                                     </tr>
