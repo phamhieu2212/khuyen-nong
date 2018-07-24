@@ -41,6 +41,8 @@
             \Route::resource('categories', 'Admin\CategoryController');
             \Route::resource('products', 'Admin\ProductController');
             \Route::resource('certificates', 'Admin\CertificateController');
+            \Route::resource('htxes', 'Admin\HtxController');
+            \Route::resource('units', 'Admin\UnitController');
         });
 
         \Route::get('/', 'Admin\IndexController@index');
@@ -51,7 +53,6 @@
 
         \Route::post('signout', 'Admin\AuthController@postSignOut');
 
-        \Route::resource('htxes', 'Admin\HtxController');
         /* NEW ADMIN RESOURCE ROUTE */
 
     });

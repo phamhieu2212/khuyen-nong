@@ -253,6 +253,11 @@ return [
                 'address' => 'Address',
             ],
         ],
+        'units'   => [
+            'columns'  => [
+                'name' => 'Name',
+            ],
+        ],
         /* NEW PAGE STRINGS */
     ],
     'roles'      => [
