@@ -50,7 +50,7 @@
 
                 <li class="m-menu__item @if( $menu=='categories') m-menu__item--active @endif" aria-haspopup="true">
                     <a href="{!! \URL::action('Admin\CategoryController@index') !!}" class="m-menu__link ">
-                    <i class="m-menu__link-icon la la-bell"></i>
+                    <i class="m-menu__link-icon la la-reorder"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -62,7 +62,7 @@
                 </li>
                 <li class="m-menu__item @if( $menu=='products') m-menu__item--active @endif" aria-haspopup="true">
                     <a href="{!! \URL::action('Admin\ProductController@index') !!}" class="m-menu__link ">
-                        <i class="m-menu__link-icon la la-bell"></i>
+                        <i class="m-menu__link-icon la la-gift"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -74,7 +74,7 @@
                 </li>
                 <li class="m-menu__item @if( $menu=='certificates') m-menu__item--active @endif" aria-haspopup="true">
                     <a href="{!! \URL::action('Admin\CertificateController@index') !!}" class="m-menu__link ">
-                        <i class="m-menu__link-icon la la-bell"></i>
+                        <i class="m-menu__link-icon la la-certificate"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -86,7 +86,7 @@
                 </li>
                 <li class="m-menu__item @if( $menu=='htxes') m-menu__item--active @endif" aria-haspopup="true">
                     <a href="{!! \URL::action('Admin\HtxController@index') !!}" class="m-menu__link ">
-                        <i class="m-menu__link-icon la la-bell"></i>
+                        <i class="m-menu__link-icon la la-institution"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -98,7 +98,7 @@
                 </li>
                 <li class="m-menu__item @if( $menu=='units') m-menu__item--active @endif" aria-haspopup="true">
                     <a href="{!! \URL::action('Admin\UnitController@index') !!}" class="m-menu__link ">
-                        <i class="m-menu__link-icon la la-bell"></i>
+                        <i class="m-menu__link-icon la la-star-half"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
@@ -110,7 +110,7 @@
                 </li>
                 <li class="m-menu__item @if( $menu=='actions') m-menu__item--active @endif" aria-haspopup="true">
                     <a href="{!! \URL::action('Admin\ActionController@index') !!}" class="m-menu__link ">
-                        <i class="m-menu__link-icon la la-bell"></i>
+                        <i class="m-menu__link-icon la la-star-half-empty"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
