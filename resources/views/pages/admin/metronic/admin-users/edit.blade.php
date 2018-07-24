@@ -89,25 +89,33 @@
                         {{--</div>--}}
                     {{--</div>--}}
                     <div class="form-group m-form__group">
-                        <label for="exampleInputName1">Name</label>
+                        <label for="exampleInputName1">Tên</label>
                         <input name="name" type="name" class="form-control m-input" id="exampleInputName1" placeholder="Enter name">
                     </div>
                     <div class="form-group m-form__group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label for="exampleInputEmail1">Email</label>
                         <input name="email" type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <span class="m-form__help">We'll never share your email with anyone else.</span>
                     </div>
                     <div class="form-group m-form__group">
-                        <label for="exampleInputPassword1">Password</label>
+                        <label for="exampleInputPassword1">Mật khẩu</label>
                         <input name="password" type="password" class="form-control m-input" id="exampleInputPassword1" placeholder="Password">
                     </div>
                     <div class="form-group m-form__group">
-                        <label for="example-tel-input">Telephone</label>
+                        <label for="example-tel-input">Số điện thoại</label>
                         <input name="phone" class="form-control m-input" type="tel" id="example-tel-input">
                     </div>
 
                     <div class="form-group m-form__group">
-                        <label for="exampleSelect1">Example select</label>
+                        <label for="exampleSelect1">Vai trò</label>
+                        <select class="form-control m-input" id="exampleSelect1">
+                            <option>Super admin</option>
+                            <option>Quản lý</option>
+                            <option>Hợp tác xã</option>
+                            <option>Nông dân</option>
+                        </select>
+                    </div>
+                    <div class="form-group m-form__group">
+                        <label for="exampleSelect1">Chứng chỉ</label>
                         <select class="form-control m-input" id="exampleSelect1">
                             <option>1</option>
                             <option>2</option>
@@ -115,20 +123,6 @@
                             <option>4</option>
                             <option>5</option>
                         </select>
-                    </div>
-                    <div class="form-group m-form__group">
-                        <label for="exampleSelect2">Example multiple select</label>
-                        <select multiple="" class="form-control m-input" id="exampleSelect2">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <div class="form-group m-form__group">
-                        <label for="exampleTextarea">Example textarea</label>
-                        <textarea class="form-control m-input" id="exampleTextarea" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
