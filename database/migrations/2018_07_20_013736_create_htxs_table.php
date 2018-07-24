@@ -12,7 +12,7 @@ class CreatehtxsTable extends Migration
      */
     public function up()
     {
-        Schema::create('htxs', function (Blueprint $table) {
+        Schema::create('htxes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('address')->nullable();
