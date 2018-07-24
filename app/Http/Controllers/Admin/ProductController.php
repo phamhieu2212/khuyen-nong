@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\ProductRepositoryInterface;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Http\Requests\PaginationRequest;
@@ -12,11 +13,14 @@ class ProductController extends Controller
 {
     /** @var  \App\Repositories\ProductRepositoryInterface */
     protected $productRepository;
+    protected $categoryRepository;
 
     public function __construct(
-        ProductRepositoryInterface $productRepository
+        ProductRepositoryInterface $productRepository,
+        CategoryRepositoryInterface $categoryRepository
     ) {
         $this->productRepository = $productRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -64,7 +68,9 @@ class ProductController extends Controller
             'pages.admin.' . config('view.admin') . '.products.edit',
             [
                 'isNew'     => true,
-                'products' => $this->productRepository->getBlankModel(),
+                'products'  => $this->productRepository->getBlankModel(),
+                'categories'=> $this->categoryRepository->all(),
+
             ]
         );
     }
@@ -114,6 +120,7 @@ class ProductController extends Controller
             [
                 'isNew' => false,
                 'product' => $product,
+                'categories'=> $this->categoryRepository->all(),
             ]
         );
     }

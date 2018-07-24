@@ -231,8 +231,9 @@ return [
         'products'   => [
             'columns'  => [
                 'name' => 'Name',
-                'category_id' => 'Category_id',
+                'category_id' => 'Category',
                 'cover_image_id' => 'Cover_image_id',
+
             ],
         ],
         /* NEW PAGE STRINGS */

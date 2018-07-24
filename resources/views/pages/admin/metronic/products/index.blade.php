@@ -115,7 +115,8 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">{!! \PaginationHelper::sort('id', 'ID') !!}</th>
-                                                                                                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.products.columns.name')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('name', trans('admin.pages.products.columns.name')) !!}</th>
+                                    <th>{!! \PaginationHelper::sort('category_id', trans('admin.pages.products.columns.category_id')) !!}</th>
                                                                                                                                                                                                             
                                     <th style="width: 40px">@lang('admin.pages.common.label.actions')</th>
                                 </tr>
@@ -125,13 +126,15 @@
                                 @foreach( $products as $product )
                                     <tr>
                                         <td>{{ $product->id }}</td>
-                                                                                                                            <td>{{ $product->name }}</td>
+                                        <td>{{ $product->name }}</td>
+                                        <td>{{ @$product->category->name }}</td>
+
                                                                                                                                                                                                                                                                         <td>
                                             <a href="{!! action('Admin\ProductController@show', $product->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
-                                                <i class="la la-edit"></i>
+                                                <i class="fa fa-edit"></i>
                                             </a>
                                             <a href="javascript:;" data-delete-url="{!! action('Admin\ProductController@destroy', $product->id) !!}" class="btn m--font-danger m-btn--pill m-btn--air no-padding delete-button">
-                                                <i class="la la-trash"></i>
+                                                <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
                                     </tr>
