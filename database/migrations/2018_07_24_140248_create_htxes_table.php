@@ -14,6 +14,8 @@ class CreatehtxesTable extends Migration
     {
         Schema::create('htxes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('address');
 
             // Add some more columns
 

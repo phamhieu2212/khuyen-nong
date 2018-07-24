@@ -7,16 +7,39 @@ use App\Http\Controllers\Controller;
 use App\Repositories\AdminUserRepositoryInterface;
 use App\Http\Requests\Admin\AdminUserRequest;
 use App\Http\Requests\PaginationRequest;
+use App\Repositories\AdminUserRoleRepositoryInterface;
+use App\Repositories\CertificateRepositoryInterface;
+use App\Repositories\Eloquent\CertificateRepository;
+use App\Repositories\FarmerCertificateRepositoryInterface;
+use App\Repositories\FarmerRepositoryInterface;
+use App\Repositories\HtxRepositoryInterface;
 
 class AdminUserController extends Controller
 {
     /** @var  \App\Repositories\AdminUserRepositoryInterface */
     protected $adminUserRepository;
+    protected $htxRepository;
+    protected $certificateRepository;
+    protected $adminUserRoleRepository;
+    protected $farmerCertificateRepository;
+    protected $farmerRepository;
+
+
 
     public function __construct(
-        AdminUserRepositoryInterface $adminUserRepository
+        AdminUserRepositoryInterface   $adminUserRepository,
+        HtxRepositoryInterface         $htxRepository,
+        CertificateRepositoryInterface $certificateRepository,
+        AdminUserRoleRepositoryInterface $adminUserRoleRepository,
+        FarmerCertificateRepositoryInterface $farmerCertificateRepository,
+        FarmerRepositoryInterface            $farmerRepository
     ) {
-        $this->adminUserRepository = $adminUserRepository;
+        $this->adminUserRepository   = $adminUserRepository;
+        $this->certificateRepository = $certificateRepository;
+        $this->htxRepository         = $htxRepository;
+        $this->adminUserRoleRepository = $adminUserRoleRepository;
+        $this->farmerCertificateRepository = $farmerCertificateRepository;
+        $this->farmerRepository            = $farmerRepository;
     }
 
     /**
@@ -63,8 +86,10 @@ class AdminUserController extends Controller
         return view(
             'pages.admin.' . config('view.admin') . '.admin-users.edit',
             [
-                'isNew'     => true,
-                'adminUsers' => $this->adminUserRepository->getBlankModel(),
+                'isNew'        => true,
+                'adminUsers'   => $this->adminUserRepository->getBlankModel(),
+                'htxes'        => $this->htxRepository->all(),
+                'certificates' => $this->certificateRepository->all()
             ]
         );
     }
@@ -87,6 +112,8 @@ class AdminUserController extends Controller
                             'api_access_token',
                             'profile_image_id',
                             'last_notification_id',
+                            'htx_id',
+                            'certificate_id'
                         ]
         );
 
@@ -96,6 +123,12 @@ class AdminUserController extends Controller
         if( empty($adminUser) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
         }
+        $this->farmerRepository->checkFarmer($request->input('htx_id'),$adminUser->id, $request->input('role', []));
+        $this->adminUserRoleRepository->setAdminUserRoles($adminUser->id, $request->input('role', []));
+        $adminUser->certificates()->sync($request->input('certificate_id'));
+
+        $adminUser->save();
+
 
         return redirect()->action('Admin\AdminUserController@index')
             ->with('message-success', trans('admin.messages.general.create_success'));
@@ -119,6 +152,8 @@ class AdminUserController extends Controller
             [
                 'isNew' => false,
                 'adminUser' => $adminUser,
+                'htxes'        => $this->htxRepository->all(),
+                'certificates' => $this->certificateRepository->all()
             ]
         );
     }
@@ -164,6 +199,7 @@ class AdminUserController extends Controller
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
         $this->adminUserRepository->update($adminUser, $input);
+        $this->adminUserRoleRepository->setAdminUserRoles($adminUser->id, $request->input('role', []));
 
         return redirect()->action('Admin\AdminUserController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

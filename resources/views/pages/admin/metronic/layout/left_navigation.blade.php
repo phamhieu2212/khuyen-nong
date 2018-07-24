@@ -84,25 +84,13 @@
                     </span>
                     </a>
                 </li>
-                <li class="m-menu__item @if( $menu=='htxs') m-menu__item--active @endif" aria-haspopup="true">
-                    <a href="{!! \URL::action('Admin\HtxController@index') !!}" class="m-menu__link ">
-                        <i class="m-menu__link-icon la la-bell"></i>
-                    <span class="m-menu__link-title">
-                        <span class="m-menu__link-wrap">
-                            <span class="m-menu__link-text">
-                                Hợp tác xã
-                            </span>
-                        </span>
-                    </span>
-                    </a>
-                </li>
                 <li class="m-menu__item @if( $menu=='htxes') m-menu__item--active @endif" aria-haspopup="true">
                     <a href="{!! \URL::action('Admin\HtxController@index') !!}" class="m-menu__link ">
                         <i class="m-menu__link-icon la la-bell"></i>
                     <span class="m-menu__link-title">
                         <span class="m-menu__link-wrap">
                             <span class="m-menu__link-text">
-                                @lang('admin.menu.htxes')
+                                Hợp tác xã
                             </span>
                         </span>
                     </span>

@@ -93,6 +93,10 @@ class AdminUser extends AuthenticatableBase
     {
         return $this->hasMany('App\Models\AdminUserRole', 'admin_user_id', 'id');
     }
+    public function certificates()
+    {
+        return $this->belongsToMany(Certificate::class,'farmer_certificates');
+    }
 
     // Utility Functions
 

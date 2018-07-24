@@ -121,6 +121,16 @@ class RepositoryBindServiceProvider extends ServiceProvider {
             \App\Repositories\Eloquent\HtxRepository::class
         );
 
+        $this->app->singleton(
+            \App\Repositories\FarmerCertificateRepositoryInterface::class,
+            \App\Repositories\Eloquent\FarmerCertificateRepository::class
+        );
+
+        $this->app->singleton(
+            \App\Repositories\FarmerRepositoryInterface::class,
+            \App\Repositories\Eloquent\FarmerRepository::class
+        );
+
         /* NEW BINDING */
     }
 }

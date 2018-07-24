@@ -128,9 +128,9 @@
                                     <div class="form-group m-form__group row">
                                         <label for="exampleSelect1">Loại chứng chỉ</label>
                                         <select name="type" class="form-control m-input" id="exampleSelect1">
-                                            <option value="1" {{($certificate->type == 1)?'selected':''}}>Chứng chỉ</option>
-                                            <option value="2" {{($certificate->type == 2)?'selected':''}}>Tiêu chuẩn</option>
-                                            <option value="3" {{($certificate->type == 3)?'selected':''}}>Chứng nhận</option>
+                                            <option value="1" {{(@$certificate->type == 1)?'selected':''}}>Chứng chỉ</option>
+                                            <option value="2" {{(@$certificate->type == 2)?'selected':''}}>Tiêu chuẩn</option>
+                                            <option value="3" {{(@$certificate->type == 3)?'selected':''}}>Chứng nhận</option>
                                         </select>
                                     </div>
                                 </div>

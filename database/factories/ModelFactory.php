@@ -233,4 +233,23 @@ $factory->define(App\Models\Htx::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\FarmerCertificate::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'admin_user_id' => '',
+        'cetificate_id' => '',
+    ];
+});
+
+$factory->define(App\Models\Farmer::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'admin_user_id' => '',
+        'longtitude' => '',
+        'latitude' => '',
+        'type' => '',
+        'htx_id' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

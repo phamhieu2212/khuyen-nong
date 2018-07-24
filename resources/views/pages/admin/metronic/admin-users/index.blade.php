@@ -135,11 +135,17 @@
                                     <td>{{ $adminUser->email }}</td>
                                     <td>@if( count($adminUser->roles) ) {{ $adminUser->roles[0]->getRoleName() }} @endif</td>
                                     <td>
-                                        <a href="{!! action('Admin\AdminUserController@show', $adminUser->id) !!}" class="btn m--font-primary m-btn--pill m-btn--air no-padding">
-                                            <i class="la la-edit"></i>
+                                        <a href="{!! action('Admin\AdminUserController@show', $adminUser->id) !!}" class="btn btn-outline-primary btn-sm m-btn m-btn--icon">
+                                                <span>
+                                                    <i class="fa fa-edit"></i>
+                                                    <span>Sửa</span>
+                                                </span>
                                         </a>
-                                        <a href="javascript:;" data-delete-url="{!! action('Admin\AdminUserController@destroy', $adminUser->id) !!}" class="btn m--font-danger m-btn--pill m-btn--air no-padding delete-button">
-                                            <i class="la la-trash"></i>
+                                        <a href="#" data-delete-url="{!! action('Admin\AdminUserController@destroy', [$adminUser->id]) !!}" class="btn btn-outline-primary btn-sm m-btn m-btn--icon">
+                                                <span>
+                                                    <i class="fa fa-trash"></i>
+                                                    <span>Xoá</span>
+                                                </span>
                                         </a>
                                     </td>
                                 </tr>

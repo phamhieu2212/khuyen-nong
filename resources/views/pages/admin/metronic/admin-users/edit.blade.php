@@ -81,7 +81,9 @@
 
         <div class="m-portlet__body">
             <!--begin::Form-->
-            <form class="m-form m-form--fit m-form--label-align-right">
+            <form class="m-form m-form--fit m-form--label-align-right " action="@if($isNew){!! action('Admin\AdminUserController@store') !!}@else{!! action('Admin\AdminUserController@update', [$adminUser->id]) !!}@endif" method="POST">
+                @if( !$isNew ) <input type="hidden" name="_method" value="PUT"> @endif
+                {!! csrf_field() !!}
                 <div class="m-portlet__body">
                     {{--<div class="form-group m-form__group m--margin-top-10">--}}
                         {{--<div class="alert m-alert m-alert--default" role="alert">--}}
@@ -90,11 +92,11 @@
                     {{--</div>--}}
                     <div class="form-group m-form__group">
                         <label for="exampleInputName1">Tên</label>
-                        <input name="name" type="name" class="form-control m-input" id="exampleInputName1" placeholder="Enter name">
+                        <input name="name" type="name" class="form-control m-input" id="exampleInputName1" placeholder="Enter name" value="{{ old('name') ? old('name') : @$adminUser->name }}">
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleInputEmail1">Email</label>
-                        <input name="email" type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input name="email" type="email" class="form-control m-input" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email') ? old('email') : @$adminUser->email }}">
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleInputPassword1">Mật khẩu</label>
@@ -102,12 +104,12 @@
                     </div>
                     <div class="form-group m-form__group">
                         <label for="example-tel-input">Số điện thoại</label>
-                        <input name="phone" class="form-control m-input" type="tel" id="example-tel-input">
+                        <input name="phone" class="form-control m-input" type="tel" id="example-tel-input" value="{{ old('phone') ? old('phone') : @$adminUser->phone }}">
                     </div>
 
                     <div class="form-group m-form__group">
                         <label for="exampleSelect1">Vai trò</label>
-                        <select name="role" class="form-control m-input" id="exampleSelect1">
+                        <select name="role[]" class="form-control m-input" id="exampleSelect1">
                             <option value="super_user">Super admin</option>
                             <option value="admin">Quản lý</option>
                             <option value="htx">Hợp tác xã</option>
@@ -116,29 +118,34 @@
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleSelect1">Chứng chỉ</label>
-                        <select class="form-control m-input" id="exampleSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select name="certificate_id[]" class="form-control m-input" id="exampleSelect1">
+                            @foreach($certificates as $certificate)
+                            <option value="{{$certificate->id}}">{{$certificate->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group m-form__group">
                         <label for="exampleSelect1">Đơn vị quản lý</label>
-                        <select class="form-control m-input" id="exampleSelect1">
+                        <select name="htx_id" class="form-control m-input" id="exampleSelect1">
                             <option>Không có</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            @foreach($htxes as $htx)
+                            <option value="{{$htx->id}}">{{$htx->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="m-portlet__foot m-portlet__foot--fit">
                     <div class="m-form__actions">
-                        <button type="reset" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                        <div class="row">
+                            <div class="col-lg-9 ml-lg-auto">
+                                <a href="{!! action('Admin\AdminUserController@index') !!}" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-accent" style="width: 120px;">
+                                    @lang('admin.pages.common.buttons.cancel')
+                                </a>
+                                <button type="submit" class="btn m-btn--pill m-btn--air btn-primary m-btn m-btn--custom" style="width: 120px;">
+                                    @lang('admin.pages.common.buttons.save')
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
