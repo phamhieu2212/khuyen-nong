@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use \App\Database\Migration;
 
-class CreatehtxsTable extends Migration
+class CreatehtxesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,6 @@ class CreatehtxsTable extends Migration
     {
         Schema::create('htxes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('address')->nullable();
 
             // Add some more columns
 
