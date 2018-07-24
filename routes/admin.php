@@ -53,6 +53,7 @@
 
         \Route::post('signout', 'Admin\AuthController@postSignOut');
 
+        \Route::resource('actions', 'Admin\ActionController');
         /* NEW ADMIN RESOURCE ROUTE */
 
     });
