@@ -266,4 +266,20 @@ $factory->define(App\Models\Action::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\ProductUnit::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'product_id' => '',
+        'unit_id' => '',
+    ];
+});
+
+$factory->define(App\Models\ProductAction::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '',
+        'product_id' => '',
+        'action_id' => '',
+    ];
+});
+
 /* NEW MODEL FACTORY */

@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 
 use App\Repositories\ActionRepositoryInterface;
 use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\ProductActionRepositoryInterface;
 use App\Repositories\ProductRepositoryInterface;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Http\Requests\PaginationRequest;
+use App\Repositories\ProductUnitRepositoryInterface;
 use App\Repositories\UnitRepositoryInterface;
 
 class ProductController extends Controller
@@ -18,17 +20,23 @@ class ProductController extends Controller
     protected $categoryRepository;
     protected $unitRepository;
     protected $actionRepository;
+    protected $productUnitRepository;
+    protected $productActionRepository;
 
     public function __construct(
-        ProductRepositoryInterface $productRepository,
-        CategoryRepositoryInterface $categoryRepository,
-        UnitRepositoryInterface     $unitRepository,
-        ActionRepositoryInterface   $actionRepository
+        ProductRepositoryInterface          $productRepository,
+        CategoryRepositoryInterface         $categoryRepository,
+        UnitRepositoryInterface             $unitRepository,
+        ActionRepositoryInterface           $actionRepository,
+        ProductUnitRepositoryInterface      $productUnitRepository,
+        ProductActionRepositoryInterface    $productActionRepository
     ) {
-        $this->productRepository = $productRepository;
-        $this->categoryRepository = $categoryRepository;
-        $this->unitRepository     = $unitRepository;
-        $this->actionRepository   = $actionRepository;
+        $this->productRepository       = $productRepository;
+        $this->categoryRepository      = $categoryRepository;
+        $this->unitRepository          = $unitRepository;
+        $this->actionRepository        = $actionRepository;
+        $this->productUnitRepository   = $productUnitRepository;
+        $this->productActionRepository = $productActionRepository;
     }
 
     /**
@@ -108,6 +116,8 @@ class ProductController extends Controller
         if( empty($product) ) {
             return redirect()->back()->with('message-error', trans('admin.errors.general.save_failed'));
         }
+        $product->actions()->sync($request->input('action_id'));
+        $product->units()->sync($request->input('unit_id'));
 
         return redirect()->action('Admin\ProductController@index')
             ->with('message-success', trans('admin.messages.general.create_success'));
@@ -127,11 +137,16 @@ class ProductController extends Controller
         }
 
         return view(
+
             'pages.admin.' . config('view.admin') . '.products.edit',
             [
                 'isNew' => false,
                 'product' => $product,
                 'categories'=> $this->categoryRepository->all(),
+                'actions'   => $this->actionRepository->all(),
+                'units'     => $this->unitRepository->all(),
+                'productAction' => $product->actions->keyBy('id'),
+                'productUnit' => $product->units->keyBy('id')
             ]
         );
     }
@@ -172,6 +187,8 @@ class ProductController extends Controller
 
         $input['is_enabled'] = $request->get('is_enabled', 0);
         $this->productRepository->update($product, $input);
+        $product->units()->sync($request->input('unit_id',[]));
+        $product->actions()->sync($request->input('action_id',[]));
 
         return redirect()->action('Admin\ProductController@show', [$id])
                     ->with('message-success', trans('admin.messages.general.update_success'));

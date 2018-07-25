@@ -107,7 +107,7 @@
                                         <label for="exampleSelect1">Danh mục</label>
                                         <select name="category_id" class="form-control m-input" id="exampleSelect1">
                                             @foreach($categories as $category)
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                <option {{(@$product->category_id == $category->id)?'selected':''}} value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -135,7 +135,7 @@
                                 <label class="col-form-label">Đơn vị</label>
                                 <select class="form-control js-example-basic-multiple" id="m_select2_3" name="unit_id[]" multiple="multiple">
                                     @foreach($units as $unit)
-                                        <option value="{{$unit->id}}">{{$unit->name}}</option>
+                                        <option {{(isset($productUnit[$unit->id]))?'selected="selected"':''}} value="{{$unit->id}}">{{$unit->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -147,7 +147,7 @@
                                 <label class="col-form-label">Hành động</label>
                                 <select class="form-control js-example-basic-multiple" id="m_select2_4" name="action_id[]" multiple="multiple">
                                     @foreach($actions as $action)
-                                        <option value="{{$action->id}}">{{$action->name}}</option>
+                                        <option {{(isset($productAction[$action->id]))?'selected="selected"':''}} value="{{$action->id}}">{{$action->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
